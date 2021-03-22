@@ -1,8 +1,10 @@
-.target-card{
+.target-card {
     cursor: pointer;
-
+    -webkit-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
+    -moz-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
+    box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
 }
-.target-card:hover{
+
+.target-card:hover {
     background-color: #f8f9fa;
-    
 }

@@ -1,8 +1,10 @@
-.mission-card{
+.mission-card {
     cursor: pointer;
-
+    -webkit-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
+    -moz-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
+    box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
 }
-.mission-card:hover{
+
+.mission-card:hover {
     background-color: #f8f9fa;
-    
 }

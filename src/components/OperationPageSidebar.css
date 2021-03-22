@@ -23,7 +23,7 @@ a:focus {
     left: 0;
 }
 
-.sidebar-item-icon{
+.sidebar-item-icon {
     width: 20px;
     text-align: center;
     margin-right: 10px;
@@ -58,9 +58,10 @@ a:focus {
     background: rgba(0, 0, 0, 0.7);
     z-index: 998;
     opacity: 0;
-    top: 56;
+    top: 0;
     transition: all 0.5s ease-in-out;
 }
+
 .overlay.active {
     display: block;
     opacity: 1;
@@ -97,13 +98,15 @@ a[aria-expanded="true"] {
     color: #fff;
     background: #1A1D1F;
 }
-.sidebar-second-header{
+
+.sidebar-second-header {
     font-size: 1.4em;
     font-weight: 400;
     line-height: 1.7em;
     color: #999;
     margin-left: 10px;
 }
+
 a[data-toggle="collapse"] {
     position: relative;
 }
@@ -115,7 +118,6 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
-
 
 ul.CTAs {
     padding: 20px;

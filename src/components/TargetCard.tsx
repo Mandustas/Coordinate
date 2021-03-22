@@ -1,10 +1,11 @@
 import React from 'react'
 import "../components/TargetCard.css"
+import Modal from './Modal'
 
 function TargetCard() {
     return (
         <div className="col " >
-            <div className="card target-card  mb-3">
+            <div className="card target-card  mb-3 " data-bs-toggle="modal" data-bs-target=".exampleModalCenter">
                 <div className="card-body text-dark">
                     <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1">Цель поиска</h5>

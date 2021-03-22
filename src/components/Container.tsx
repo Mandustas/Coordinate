@@ -17,8 +17,10 @@ function Container() {
 
     return (
         <div className="container-fluid bg-light" id="AppContainer" style={{backgroundColor: "#7E8994"}}>
-            <OperationsHeader></OperationsHeader>
-            <Operations></Operations>
+            {/* <OperationsHeader></OperationsHeader>
+            <Operations></Operations> */}
+
+            <OperationPage></OperationPage>
         </div>
     )
 }
