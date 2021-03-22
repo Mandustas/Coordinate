@@ -23,6 +23,12 @@ a:focus {
     left: 0;
 }
 
+.sidebar-item-icon{
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
 #dismiss {
     width: 35px;
     height: 35px;
@@ -91,7 +97,13 @@ a[aria-expanded="true"] {
     color: #fff;
     background: #1A1D1F;
 }
-
+.sidebar-second-header{
+    font-size: 1.4em;
+    font-weight: 400;
+    line-height: 1.7em;
+    color: #999;
+    margin-left: 10px;
+}
 a[data-toggle="collapse"] {
     position: relative;
 }

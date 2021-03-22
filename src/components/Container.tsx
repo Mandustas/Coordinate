@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import OperationPage from './OperationPage';
+import Operations from './Operations';
 import OperationsContainer from './OperationsContainer'
+import OperationsHeader from './OperationsHeader';
 
 function Container() {
     useEffect(() => {
@@ -15,7 +17,8 @@ function Container() {
 
     return (
         <div className="container-fluid bg-light" id="AppContainer" style={{backgroundColor: "#7E8994"}}>
-            <OperationPage></OperationPage>
+            <OperationsHeader></OperationsHeader>
+            <Operations></Operations>
         </div>
     )
 }

@@ -11,8 +11,6 @@ function OperationCard() {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

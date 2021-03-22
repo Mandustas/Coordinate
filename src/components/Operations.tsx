@@ -3,7 +3,7 @@ import OperationCard from './OperationCard'
 
 export const Operations: React.FC = () => {
     return (
-        <>
+        <div className="row">
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
@@ -14,7 +14,7 @@ export const Operations: React.FC = () => {
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
 
-        </>
+        </div>
 
     )
 }
