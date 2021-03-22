@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Header: React.FC = () => {
     return (
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg" id="AppHeader">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-sm" id="AppHeader">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Coordinate</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

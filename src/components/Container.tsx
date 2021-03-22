@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import OperationPage from './OperationPage';
 import OperationsContainer from './OperationsContainer'
 
 function Container() {
@@ -14,7 +15,7 @@ function Container() {
 
     return (
         <div className="container-fluid bg-light" id="AppContainer" style={{backgroundColor: "#7E8994"}}>
-            <OperationsContainer></OperationsContainer>
+            <OperationPage></OperationPage>
         </div>
     )
 }

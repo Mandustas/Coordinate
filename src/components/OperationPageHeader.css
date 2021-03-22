@@ -1,0 +1,13 @@
+.operation-page-header-item.active{
+    display: block;
+}
+.operation-page-header-item{
+    display: none;
+}
+
+#sidebarCollapse{
+    display: none;
+}
+#sidebarCollapse.active{
+    display: block;
+}
