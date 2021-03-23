@@ -4,7 +4,11 @@ import Operations from './Operations';
 import OperationsContainer from './OperationsContainer'
 import OperationsHeader from './OperationsHeader';
 
-function Container() {
+export interface ContainerProps{
+    children: any
+}
+
+function Container({children}:ContainerProps) {
     useEffect(() => {
         const headerHeight = $("#AppHeader").outerHeight() as any;
         console.log(headerHeight);
@@ -17,10 +21,8 @@ function Container() {
 
     return (
         <div className="container-fluid bg-light" id="AppContainer" style={{backgroundColor: "#7E8994"}}>
-            {/* <OperationsHeader></OperationsHeader>
-            <Operations></Operations> */}
-
-            <OperationPage></OperationPage>
+            {children}
+            
         </div>
     )
 }

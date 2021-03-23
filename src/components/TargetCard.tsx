@@ -4,7 +4,7 @@ import Modal from './Modal'
 
 function TargetCard() {
     return (
-        <div className="col " >
+        <div className="col-12">
             <div className="card target-card  mb-3 " data-bs-toggle="modal" data-bs-target=".exampleModalCenter">
                 <div className="card-body text-dark">
                     <div className="d-flex w-100 justify-content-between">

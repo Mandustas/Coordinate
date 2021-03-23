@@ -11,3 +11,7 @@
 #sidebarCollapse.active{
     display: block;
 } */
+
+.operation-page-header-underline:hover{
+    text-decoration: underline;
+}

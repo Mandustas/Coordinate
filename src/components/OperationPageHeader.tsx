@@ -5,9 +5,10 @@ export interface OperationPageHeaderProps {
     title?: string
     isBurger: boolean
     operationName?: string
+    href?: string
 }
 
-function OperationPageHeader({ title, isBurger, operationName }: OperationPageHeaderProps) {
+function OperationPageHeader({ title, isBurger, operationName, href }: OperationPageHeaderProps) {
     useEffect(() => {
         // Handler to call on window resize
         // function handleResize() {
@@ -37,9 +38,15 @@ function OperationPageHeader({ title, isBurger, operationName }: OperationPageHe
         // return () => window.removeEventListener("resize", handleResize);
     }, []); // Empty array ensures that effect is only run on mount
 
+    function handleClick() {
+        if (href!=undefined && href !=null && href !="") {
+            document.location.href = String(href)
+        }
+    }
+
     return (
 
-        <nav className="navbar navbar-light bg-light justify-content-between ">
+        <nav className="navbar justify-content-between ">
 
             <div className="d-flex">
                 {isBurger
@@ -50,17 +57,11 @@ function OperationPageHeader({ title, isBurger, operationName }: OperationPageHe
                 }
 
 
-                <a className="navbar-brand" style={{ marginRight: 0, marginLeft: 10 }}>{isBurger ? operationName + ' /': ''} {title}:</a>
+                <a className={`navbar-brand  ${href!=undefined && href !=null && href !="" ? 'operation-page-header-underline' : ''}`} onClick={handleClick} href={href} style={{ marginRight: 0, marginLeft: 10 }}>
+                    {isBurger
+                        ? operationName + ' /' : ''} {title}:
+                    </a>
             </div>
-            {/* <div className="d-flex">
-                <a className="nav-item nav-link operation-page-header-item" href="#">Обзор</a>
-                <a className="nav-item nav-link operation-page-header-item" href="#">Участники</a>
-                <a className="nav-item nav-link operation-page-header-item" href="#">Цели</a>
-                <a className="nav-item nav-link operation-page-header-item" href="#">Миссии</a>
-                <a className="nav-item nav-link operation-page-header-item" href="#">Изменить</a>
-
-            </div> */}
-
         </nav>
     )
 }

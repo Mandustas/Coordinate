@@ -9,10 +9,13 @@ function MissionCard() {
                     <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1">Миссия</h5>
 
-                        <small className="text-muted">25.03.2021 17:42</small>
+                        <small className="text-muted">Андрей Подоляко</small>
                     </div>
-                    <p></p>
+                    <p>Объекты:</p>
                     <ul>
+                        <li>
+                            41.40338, 2.17403
+                        </li>
                         <li>
                             41.40338, 2.17403
                         </li>
