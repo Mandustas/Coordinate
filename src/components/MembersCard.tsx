@@ -5,7 +5,7 @@ import MemberLine from './MemberLine'
 function MembersCard() {
   return (
     <div className="flex-column align-items-start members-card">
-      <div className="d-flex w-100 justify-content-between container-fluid">
+      <div className="d-flex w-100 container-fluid">
         {/* <div className="row">
           <div className="d-flex justify-content-between col-12 col-md-6">
             <p className="">Андрей Подоляко</p> 

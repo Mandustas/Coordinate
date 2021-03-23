@@ -15,8 +15,6 @@ export const Operations: React.FC = () => {
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
-            <OperationCard></OperationCard>
-            <OperationCard></OperationCard>
 
         </div>
 

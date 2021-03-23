@@ -12,6 +12,7 @@ import TargetsPage from './components/TargetsPage';
 import OperationPageSidebar from './components/OperationPageSidebar';
 import MembersPage from './components/MembersPage';
 import OperationPageContainer from './components/OperationPageContainer';
+import ImagesPage from './components/ImagesPage';
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
             <Route path='/operation/review' component={OperationPageContainer}></Route>
             <Route path='/operation/targets' component={TargetsPage}></Route>
             <Route path='/operation/members' component={MembersPage}></Route>
+            <Route path='/operation/images' component={ImagesPage}></Route>
           </Switch>
         </Container>
       </BrowserRouter>

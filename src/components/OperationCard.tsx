@@ -1,4 +1,5 @@
 import React from 'react'
+import "../components/OperationCard.css"
 
 function OperationCard() {
     function handleClick() {
@@ -6,8 +7,8 @@ function OperationCard() {
 
     }
     return (
-        < div className = "col-sm-6 col-md-4 col-xl-3 mb-4" onClick = {handleClick} >
-            <div className="card">
+        < div className = "col-sm-6 col-md-4 col-xl-3 mb-4 " onClick = {handleClick} >
+            <div className="card operation-card">
                 <div className="card-body">
                     <h5 className="card-title">Название операции</h5>
                     <p className="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non recusandae dolor adipisci doloribus accusamus, asperiores</p>

@@ -41,9 +41,9 @@ function ReviewPage() {
             </div>
 
             <div className="col-md-5 col-12" id="OperationPageContainerMembers">
-                <OperationPageHeader title="Участники поиска" isBurger={false}></OperationPageHeader>
+                <OperationPageHeader title="Участники поиска" isBurger={false} href="/operation/members"></OperationPageHeader>
                 <MembersCard></MembersCard>
-                <OperationPageHeader title="Изображения" isBurger={false}></OperationPageHeader>
+                <OperationPageHeader title="Изображения" isBurger={false} href="/operation/images"></OperationPageHeader>
                 <ImagesPreview></ImagesPreview>
             </div>
         </div>
