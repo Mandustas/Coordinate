@@ -24,6 +24,10 @@ function MembersCard() {
           <MemberLine></MemberLine>
           <MemberLine></MemberLine>
           <MemberLine></MemberLine>
+          <MemberLine></MemberLine>
+          <MemberLine></MemberLine>
+          <MemberLine></MemberLine>
+          <MemberLine></MemberLine>
         </table>
       </div>
     </div>

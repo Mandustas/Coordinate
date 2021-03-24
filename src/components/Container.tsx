@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react'
-import OperationPage from './OperationPage';
-import Operations from './Operations';
-import OperationsContainer from './OperationsContainer'
-import OperationsHeader from './OperationsHeader';
+import $ from "jquery"
 
 export interface ContainerProps{
     children: any

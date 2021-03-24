@@ -14,6 +14,7 @@ import ImagesPage from './components/ImagesPage';
 import ObjectsPage from './components/ObjectsPage';
 import MissionsPage from './components/MissionsPage';
 import OperationPageHeader from './components/OperationPageHeader';
+import CreateOperation from './components/CreateOperation';
 
 function App() {
   useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
             <Route path='/operation/images' component={ImagesPage}></Route>
             <Route path='/operation/objects' component={ObjectsPage}></Route>
             <Route path='/operation/missions' component={MissionsPage}></Route>
-            <Route path='/operation/create' component={OperationPageHeader}></Route>
+            <Route path='/operation/create' component={CreateOperation}></Route>
           </Switch>
         </Container>
       </BrowserRouter>

@@ -6,9 +6,10 @@ export interface OperationPageHeaderProps {
     isBurger: boolean
     operationName?: string
     href?: string
+    modelType?: string
 }
 
-function OperationPageHeader({ title, isBurger, operationName, href }: OperationPageHeaderProps) {
+function OperationPageHeader({ title, isBurger, operationName, href, modelType }: OperationPageHeaderProps) {
     // useEffect(() => {
     //     function handleResize() {
     //         // Set window width/height to state
@@ -23,15 +24,11 @@ function OperationPageHeader({ title, isBurger, operationName, href }: Operation
     //                 $(".operation-page-header-item").removeClass("active")
     //             }
     //         }
-
     //     }
-
     //     // Add event listener
     //     window.addEventListener("resize", handleResize);
-
     //     // Call handler right away so state gets updated with initial window size
     //     handleResize();
-
     //     // Remove event listener on cleanup
     //     return () => window.removeEventListener("resize", handleResize);
     // }, []); // Empty array ensures that effect is only run on mount
@@ -59,8 +56,17 @@ function OperationPageHeader({ title, isBurger, operationName, href }: Operation
                     {operationName != undefined && operationName != null && operationName != ""
                         ? operationName + ' /' : ''
                     } {title}
-                    </a>
+                </a>
             </div>
+
+            {modelType != undefined && modelType != null && modelType != ""
+                ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${modelType}`}>
+                    <i className="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                : null
+            }
+
+
         </nav>
     )
 }

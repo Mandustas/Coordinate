@@ -4,6 +4,7 @@ import OperationPageHeader from './OperationPageHeader'
 import "../components/Map.css"
 import MissionCard from './MissionCard'
 import DetectedObjectsCard from './DetectedObjectsCard'
+import $ from "jquery"
 
 function MissionsPage() {
     useEffect(() => {

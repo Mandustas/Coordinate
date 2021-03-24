@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "../components/OperationPageSidebar.css"
+import $ from "jquery"
 
 function OperationPageSidebar() {
     useEffect(() => {

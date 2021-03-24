@@ -21,6 +21,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-select": "^4.3.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "typescript": "^4.2.3",
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@types/jquery": "^3.5.5",
     "@types/leaflet": "^1.7.0",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-select": "^4.0.13"
   }
 }

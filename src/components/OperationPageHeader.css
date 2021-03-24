@@ -15,3 +15,7 @@
 .operation-page-header-underline:hover{
     text-decoration: underline;
 }
+.header-add-button:hover{
+    background-color: white;
+    border: solid 1px rgba(0,0,0,.125);
+}
