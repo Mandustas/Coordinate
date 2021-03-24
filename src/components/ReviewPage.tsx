@@ -1,4 +1,5 @@
 import React from 'react'
+import DetectedObjectsCard from './DetectedObjectsCard'
 import ImagesPreview from './ImagesPreview'
 import MapPreview from './MapPreview'
 import MembersCard from './MembersCard'
@@ -13,7 +14,6 @@ function ReviewPage() {
             <div className="col-md-4 col-12" id="OperationPageContainerTargets">
                 <OperationPageHeader operationName="Поиск кота" title="Цели поиска" isBurger={true} href="/operation/targets"></OperationPageHeader>
                 <MapPreview></MapPreview>
-                <TargetCard></TargetCard>
                 <TargetCard></TargetCard>
                 <Modal>
                     <div className="modal-header">
@@ -31,13 +31,16 @@ function ReviewPage() {
                     </div>
                 </Modal>
             </div>
-            
+
             <div className="col-md-3 col-12" id="OperationPageContainerMissions">
-                <OperationPageHeader title="Поисковые миссии" isBurger={false}></OperationPageHeader>
+                <OperationPageHeader title="Карта / Объекты " isBurger={false} href="/operation/objects"></OperationPageHeader>
+                <DetectedObjectsCard></DetectedObjectsCard>
+                <DetectedObjectsCard></DetectedObjectsCard>
+                <OperationPageHeader title="Поисковые миссии" isBurger={false} href="/operation/missions"></OperationPageHeader>
                 <MissionCard></MissionCard>
                 <MissionCard></MissionCard>
                 <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
+
             </div>
 
             <div className="col-md-5 col-12" id="OperationPageContainerMembers">

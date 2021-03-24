@@ -1,21 +1,20 @@
 import React from 'react'
-import "../components/MissionCard.css"
 
-function MissionCard() {
+function DetectedObjectsCard() {
     return (
         <div className="col">
             <div className="card mission-card mb-3">
                 <div className="card-body text-dark">
                     <div className="d-flex w-100 justify-content-between">
-                        <h5 className="mb-1">Миссия</h5>
-
+                        <h5 className="mb-1">Без названия</h5>
                         <small className="text-muted">Андрей Подоляко</small>
                     </div>
-                    <div>Объект #1: <span>41.40338, 2.17403 </span></div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+
                 </div>
             </div>
         </div>
     )
 }
 
-export default MissionCard
+export default DetectedObjectsCard

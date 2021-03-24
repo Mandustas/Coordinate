@@ -11,10 +11,7 @@ export interface ContainerProps{
 function Container({children}:ContainerProps) {
     useEffect(() => {
         const headerHeight = $("#AppHeader").outerHeight() as any;
-        console.log(headerHeight);
-        
         const height = $(window).height() as any;
-        console.log(height);
         
         $('#AppContainer').css("min-height", height-headerHeight);
       });

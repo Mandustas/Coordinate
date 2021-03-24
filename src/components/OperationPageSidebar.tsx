@@ -43,6 +43,9 @@ function OperationPageSidebar() {
                         <a href="#"><i className="fa fa-edit sidebar-item-icon"></i> Изменить</a>
                     </li>
                     <li>
+                        <a href="#"><i className="fa fa-map-marker sidebar-item-icon"></i> Карта</a>
+                    </li>
+                    <li>
                         <a href="#"><i className="fa fa-users sidebar-item-icon"></i> Участники</a>
                     </li>
                     <li>

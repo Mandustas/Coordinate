@@ -12,7 +12,7 @@ function MembersCard() {
             <i className="fa fa-times"></i>
           </div>
         </div> */}
-        <table className="table">
+        <table className="table" style={{border:"none"}}>
           <thead>
             <tr>
               <th scope="col">#</th>
