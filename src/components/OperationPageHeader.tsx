@@ -7,9 +7,10 @@ export interface OperationPageHeaderProps {
     operationName?: string
     href?: string
     modelType?: string
+    pageAddHref?: string
 }
 
-function OperationPageHeader({ title, isBurger, operationName, href, modelType }: OperationPageHeaderProps) {
+function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref }: OperationPageHeaderProps) {
     // useEffect(() => {
     //     function handleResize() {
     //         // Set window width/height to state
@@ -39,6 +40,13 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType }
         }
     }
 
+    function handleCreateClick() {
+        if (pageAddHref != undefined && pageAddHref != null && pageAddHref != "") {
+            document.location.href = String(pageAddHref)
+        } else{
+            return
+        }
+    }
     return (
 
         <nav className="navbar justify-content-between ">
@@ -59,8 +67,8 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType }
                 </a>
             </div>
 
-            {modelType != undefined && modelType != null && modelType != ""
-                ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${modelType}`}>
+            {(modelType != undefined && modelType != null && modelType != "")||(pageAddHref != undefined && pageAddHref != null && pageAddHref != "")
+                ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
                     <i className="fa fa-plus" aria-hidden="true"></i>
                 </div>
                 : null

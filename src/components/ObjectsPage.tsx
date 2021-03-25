@@ -5,6 +5,9 @@ import "../components/Map.css"
 import MissionCard from './MissionCard'
 import DetectedObjectsCard from './DetectedObjectsCard'
 import $ from "jquery"
+import CreateOperation from './CreateOperation'
+import { CreateTypes } from './ReviewPage'
+import ModalObjectAdd from './ModalObjectAdd'
 
 function MissionsPage() {
     useEffect(() => {
@@ -30,12 +33,14 @@ function MissionsPage() {
 
     return (
         <div className="row mission-page-container">
+
             <div className="col-md-4 col-12 objects-page-map">
-                <OperationPageHeader title="Найденные объекты" isBurger={true} operationName=""></OperationPageHeader>
+                <OperationPageHeader title="Найденные объекты" isBurger={true} operationName="" modelType={CreateTypes.ModalObjectAdd}></OperationPageHeader>
                 <DetectedObjectsCard></DetectedObjectsCard>
                 <DetectedObjectsCard></DetectedObjectsCard>
                 <DetectedObjectsCard></DetectedObjectsCard>
                 <DetectedObjectsCard></DetectedObjectsCard>
+                <ModalObjectAdd></ModalObjectAdd>
             </div>
             <div className="col-md-8 col-12 objects-page-map-container" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>

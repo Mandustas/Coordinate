@@ -1,13 +1,12 @@
 import React from 'react'
 import OperationCard from './OperationCard'
-import OperationsHeader from './OperationsHeader';
+import OperationPageHeader from './OperationPageHeader';
 
 export const Operations: React.FC = () => {
-    
-
+ 
     return (
         <div className="row">
-            <OperationsHeader></OperationsHeader>
+            <OperationPageHeader title="Операции" isBurger={false} pageAddHref="/operation/create"></OperationPageHeader>
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
@@ -15,7 +14,6 @@ export const Operations: React.FC = () => {
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
             <OperationCard></OperationCard>
-
         </div>
 
     )
