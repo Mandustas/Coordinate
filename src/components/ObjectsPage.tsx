@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Map from './Map'
 import OperationPageHeader from './OperationPageHeader'
 import "../components/Map.css"
-import MissionCard from './MissionCard'
 import DetectedObjectsCard from './DetectedObjectsCard'
 import $ from "jquery"
-import CreateOperation from './CreateOperation'
 import { CreateTypes } from './ReviewPage'
 import ModalObjectAdd from './ModalObjectAdd'
 

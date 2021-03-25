@@ -5,7 +5,7 @@ import OperationPageHeader from './OperationPageHeader'
 function ImagesPage() {
     return (
         <div className="row">
-            <OperationPageHeader title="Изображения" isBurger={false}></OperationPageHeader>
+            <OperationPageHeader title="Изображения" isBurger={true}></OperationPageHeader>
             <ImagePreviewItem></ImagePreviewItem>
             <ImagePreviewItem></ImagePreviewItem>
             <ImagePreviewItem></ImagePreviewItem>

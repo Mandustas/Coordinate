@@ -1,5 +1,3 @@
-import React from 'react'
-import Modal from './Modal'
 import ModalTarget from './ModalTarget'
 import ModalTargetCreate from './ModalTargetCreate'
 import OperationPageHeader from './OperationPageHeader'
@@ -10,6 +8,7 @@ function ReviewPageTargerArea() {
     return (
         <>
             <OperationPageHeader title="Цели поиска " isBurger={false} href="/operation/targets" modelType={CreateTypes.ModalTargetCreate}></OperationPageHeader>
+            <TargetCard></TargetCard>
             <TargetCard></TargetCard>
             <ModalTargetCreate></ModalTargetCreate>
             <ModalTarget></ModalTarget>
