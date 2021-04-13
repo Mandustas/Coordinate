@@ -3,7 +3,7 @@ import "../components/OperationCard.css"
 
 function OperationCard() {
     function handleClick() {
-        document.location.href = "/operation/review";
+        document.location.href = "/operation/missions";
 
     }
     return (

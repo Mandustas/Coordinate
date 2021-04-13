@@ -8,9 +8,10 @@ export interface OperationPageHeaderProps {
     href?: string
     modelType?: string
     pageAddHref?: string
+    call?: boolean
 }
 
-function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref }: OperationPageHeaderProps) {
+function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref,call }: OperationPageHeaderProps) {
     // useEffect(() => {
     //     function handleResize() {
     //         // Set window width/height to state
@@ -66,14 +67,13 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
                     } {title}
                 </a>
             </div>
-
+            
             {(modelType != undefined && modelType != null && modelType != "")||(pageAddHref != undefined && pageAddHref != null && pageAddHref != "")
                 ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
-                    <i className="fa fa-plus" aria-hidden="true"></i>
+                    <i className={`fa  ${call == true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
                 </div>
                 : null
             }
-
 
         </nav>
     )

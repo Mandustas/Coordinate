@@ -1,4 +1,4 @@
-import DetectedObjectsCard from './DetectedObjectsCard'
+import DetectedObjectsCard from './-DetectedObjectsCard'
 import ModalObjectAdd from './ModalObjectAdd'
 import OperationPageHeader from './OperationPageHeader'
 import { CreateTypes } from './ReviewPage'

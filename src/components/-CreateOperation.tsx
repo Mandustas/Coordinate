@@ -2,7 +2,7 @@ import React from 'react'
 import MembersCard from './MembersCard'
 import ModalMemberAdd from './ModalMemberAdd'
 import ModalTarget from './ModalTarget'
-import ModalTargetCreate from './ModalTargetCreate'
+import ModalTargetAdd from './ModalTargetAdd'
 import OperationPageHeader from './OperationPageHeader'
 import { CreateTypes } from './ReviewPage'
 import TargetCard from './TargetCard'
@@ -14,7 +14,6 @@ function CreateOperation() {
                 <OperationPageHeader title="Создание операции" isBurger={false} ></OperationPageHeader>
                 <form>
                     <div className="form-group">
-                        <label>Название операции:</label>
                         <div className="d-flex">
                             <input type="text" className="form-control border border-dark" id="exampleFormControlInput1" placeholder="Введите название операции">
                             </input>
@@ -30,7 +29,7 @@ function CreateOperation() {
                 <TargetCard></TargetCard>
 
                 <ModalTarget></ModalTarget>
-                <ModalTargetCreate></ModalTargetCreate>
+                <ModalTargetAdd></ModalTargetAdd>
 
             </div>
             <div className="col-md-8 col-12">

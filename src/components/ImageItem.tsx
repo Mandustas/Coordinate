@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ImagePreviewItem() {
+function ImageItem() {
     return (
         <div className="col-12 col-md-4 mb-3">
             <div className="card">
@@ -10,4 +10,4 @@ function ImagePreviewItem() {
     )
 }
 
-export default ImagePreviewItem
+export default ImageItem

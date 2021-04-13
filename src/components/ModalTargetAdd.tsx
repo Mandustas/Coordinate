@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 
-function ModalTargetCreate() {
+function ModalTargetAdd() {
     return (
         <>
             <Modal modelType={CreateTypes.ModalTargetCreate}>
@@ -33,4 +33,4 @@ function ModalTargetCreate() {
     )
 }
 
-export default ModalTargetCreate
+export default ModalTargetAdd

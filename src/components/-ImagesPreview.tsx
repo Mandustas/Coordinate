@@ -1,11 +1,11 @@
 import React from 'react'
 import ImageItem from './ImageItem'
-import OperationPageHeader from './OperationPageHeader'
 
-function ImagesPage() {
+function ImagesPreview() {
+
     return (
         <div className="row">
-            <OperationPageHeader title="Изображения" isBurger={true}></OperationPageHeader>
+            <ImageItem></ImageItem>
             <ImageItem></ImageItem>
             <ImageItem></ImageItem>
             <ImageItem></ImageItem>
@@ -15,4 +15,4 @@ function ImagesPage() {
     )
 }
 
-export default ImagesPage
+export default ImagesPreview
