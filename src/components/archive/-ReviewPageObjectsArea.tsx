@@ -1,7 +1,7 @@
 import DetectedObjectsCard from './-DetectedObjectsCard'
-import ModalObjectAdd from './ModalObjectAdd'
-import OperationPageHeader from './OperationPageHeader'
-import { CreateTypes } from './ReviewPage'
+import ModalObjectAdd from '../ModalObjectAdd'
+import OperationPageHeader from '../OperationPageHeader'
+import { CreateTypes } from '../ReviewPage'
 
 function ReviewPageObjectsArea() {
     return (

@@ -1,11 +1,11 @@
 import React from 'react'
-import MembersCard from './MembersCard'
-import ModalMemberAdd from './ModalMemberAdd'
-import ModalTarget from './ModalTarget'
-import ModalTargetAdd from './ModalTargetAdd'
-import OperationPageHeader from './OperationPageHeader'
-import { CreateTypes } from './ReviewPage'
-import TargetCard from './TargetCard'
+import MembersTable from '../MembersTable'
+import ModalMemberAdd from '../ModalMemberAdd'
+import ModalTarget from '../ModalTarget'
+import ModalTargetAdd from '../ModalTargetAdd'
+import OperationPageHeader from '../OperationPageHeader'
+import { CreateTypes } from '../ReviewPage'
+import TargetCard from '../TargetCard'
 
 function CreateOperation() {
     return (
@@ -34,7 +34,7 @@ function CreateOperation() {
             </div>
             <div className="col-md-8 col-12">
                 <OperationPageHeader title="Участники" isBurger={false} modelType={CreateTypes.ModalMemberAdd}></OperationPageHeader>
-                <MembersCard></MembersCard>
+                <MembersTable></MembersTable>
                 <ModalMemberAdd></ModalMemberAdd>
             </div>
         </div>

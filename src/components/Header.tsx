@@ -8,6 +8,7 @@ export const Header: React.FC = () => {
                 <div className="navbar-nav">
                     <div className="d-flex">
                         <a className="nav-link" style={{padding:".5rem 1rem"}} href="/operations">Операции</a>
+                        <a className="nav-link" style={{padding:".5rem 1rem"}} href="/users">Пользователи</a>
                         <a className="nav-link" style={{padding:".5rem 1rem"}} href="#">Выйти</a>   
                     </div>
                 </div>

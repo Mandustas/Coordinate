@@ -1,4 +1,3 @@
-import MemberAddMultiselect from './MemberAddMultiselect'
 import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 

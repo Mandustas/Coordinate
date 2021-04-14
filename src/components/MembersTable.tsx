@@ -2,7 +2,7 @@ import React from 'react'
 import "../components/MembersCard.css"
 import MemberLine from './MemberLine'
 
-function MembersCard() {
+function MembersTable() {
   return (
     <div className="flex-column align-items-start members-card">
       <div className="d-flex w-100 container-fluid">
@@ -34,4 +34,4 @@ function MembersCard() {
   )
 }
 
-export default MembersCard
+export default MembersTable

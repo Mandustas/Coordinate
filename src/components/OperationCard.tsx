@@ -1,13 +1,18 @@
 import React from 'react'
 import "../components/OperationCard.css"
 
-function OperationCard() {
+export interface OperationCard {
+    isActive?: boolean
+}
+function OperationCard({isActive}:OperationCard) {
+
     function handleClick() {
         document.location.href = "/operation/missions";
 
     }
+
     return (
-        < div className="col-sm-6 col-md-4 col-xl-3 mb-4 " onClick={handleClick} >
+        < div className={` ${isActive ? 'col-12' : 'col-md-12 col-xl-4 mb-4'} `} onClick={handleClick} >
             <div className="card operation-card ">
                 <div className="card-body">
                     <h5 className="card-title">Название операции</h5>

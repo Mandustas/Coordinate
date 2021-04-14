@@ -11,7 +11,7 @@ import OperationPageSidebar from './components/OperationPageSidebar';
 import MembersPage from './components/MembersPage';
 import ImagesPage from './components/ImagesPage';
 import MissionsPage from './components/MissionsPage';
-import CreateOperation from './components/-CreateOperation';
+import CreateOperation from './components/archive/-CreateOperation';
 import ReviewPage from './components/ReviewPage';
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
             <Route path='/operation/review' component={ReviewPage}></Route>
             <Route path='/operation/targets' component={TargetsPage}></Route>
             <Route path='/operation/members' component={MembersPage}></Route>
+            <Route path='/users' component={MembersPage}></Route>
             <Route path='/operation/images' component={ImagesPage}></Route>
             <Route path='/operation/missions' component={MissionsPage}></Route>
             <Route path='/operation/create' component={CreateOperation}></Route>

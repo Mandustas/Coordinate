@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Circle, MapContainer, TileLayer } from 'react-leaflet'
 import "../components/Map.css"
 import $ from 'jquery';
+import "leaflet/dist/leaflet.css";
 
 
 // export interface MapState{
@@ -24,7 +25,7 @@ function Map() {
                     <Popup>
                         A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
-                </Marker> */}
+                </Marker>
             <Circle
                 center={[53.23204557790858, 34.12212667059104]}
                 pathOptions={greenOptions}
@@ -45,7 +46,7 @@ function Map() {
                 pathOptions={greenOptions}
                 radius={300}
             />
-            {/* <Marker
+            <Marker
                     icon={icon}
                     position={[51.5, -0.1]}>
 

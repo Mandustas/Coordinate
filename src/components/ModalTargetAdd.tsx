@@ -15,7 +15,7 @@ function ModalTargetAdd() {
                 <div className="modal-body">
                     <form>
                         <div className="form-group">
-                            <label >Название</label>
+                            <label>Название</label>
                             <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Введите название цели поиска"></input>
                         </div>
                         <div className="form-group">

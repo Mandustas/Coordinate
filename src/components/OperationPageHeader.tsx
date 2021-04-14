@@ -9,31 +9,11 @@ export interface OperationPageHeaderProps {
     modelType?: string
     pageAddHref?: string
     call?: boolean
+    filter?: boolean
+    filterType?: string
 }
 
-function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref,call }: OperationPageHeaderProps) {
-    // useEffect(() => {
-    //     function handleResize() {
-    //         // Set window width/height to state
-    //         if (window.innerWidth >= 576) {
-    //             // $("#sidebarCollapse").removeClass("active")
-    //             $("#sidebarCollapse").css("display", "none")
-    //             $(".operation-page-header-item").addClass("active")
-    //         } else {
-    //             if (!$("#sidebarCollapse").hasClass("active")) {
-    //                 // $("#sidebarCollapse").addClass("active")
-    //                 $("#sidebarCollapse").css("display", "block")
-    //                 $(".operation-page-header-item").removeClass("active")
-    //             }
-    //         }
-    //     }
-    //     // Add event listener
-    //     window.addEventListener("resize", handleResize);
-    //     // Call handler right away so state gets updated with initial window size
-    //     handleResize();
-    //     // Remove event listener on cleanup
-    //     return () => window.removeEventListener("resize", handleResize);
-    // }, []); // Empty array ensures that effect is only run on mount
+function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter,filterType }: OperationPageHeaderProps) {
 
     function handleClick() {
         if (href != undefined && href != null && href != "") {
@@ -44,7 +24,7 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
     function handleCreateClick() {
         if (pageAddHref != undefined && pageAddHref != null && pageAddHref != "") {
             document.location.href = String(pageAddHref)
-        } else{
+        } else {
             return
         }
     }
@@ -67,8 +47,13 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
                     } {title}
                 </a>
             </div>
-            
-            {(modelType != undefined && modelType != null && modelType != "")||(pageAddHref != undefined && pageAddHref != null && pageAddHref != "")
+            {filter == true
+                ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${filterType}`} >
+                    <i className="fa fa-filter"></i>
+                </div>
+                : null
+            }
+            {(modelType != undefined && modelType != null && modelType != "") || (pageAddHref != undefined && pageAddHref != null && pageAddHref != "")
                 ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
                     <i className={`fa  ${call == true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
                 </div>

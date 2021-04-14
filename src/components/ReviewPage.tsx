@@ -1,8 +1,4 @@
-import ReviewPageImagesArea from './ReviewPageImagesArea'
-import ReviewPageMapArea from './ReviewPageMapArea'
 import ReviewPageMembersArea from './ReviewPageMembersArea'
-import ReviewPageMissionsArea from './ReviewPageMissionsArea'
-import ReviewPageObjectsArea from './ReviewPageObjectsArea'
 import ReviewPageTargerArea from './ReviewPageTargerArea'
 
 export enum CreateTypes {
@@ -14,6 +10,10 @@ export enum CreateTypes {
     PageOperationAdd = "page-operation-add",
     ModalOperationAdd = "modal-operation-add",
 
+}
+
+export enum FilterTypes {
+    ModalOperationsHistoryFilter = "modal-operation-history-filter",
 }
 
 function ReviewPage() {

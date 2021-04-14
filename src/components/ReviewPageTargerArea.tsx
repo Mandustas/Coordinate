@@ -8,13 +8,9 @@ function ReviewPageTargerArea() {
     return (
         <>
             <OperationPageHeader operationName="Поиск кота" title="Цели поиска " isBurger={true} href="/operation/targets" modelType={CreateTypes.ModalTargetCreate}></OperationPageHeader>
-            {/* <div className="container"> */}
-                {/* <div className="row"> */}
-                    <TargetCard></TargetCard>
-                    <TargetCard></TargetCard>
-                    <TargetCard></TargetCard>
-                {/* </div> */}
-            {/* </div> */}
+            <TargetCard></TargetCard>
+            <TargetCard></TargetCard>
+            <TargetCard></TargetCard>
             <ModalTargetAdd></ModalTargetAdd>
             <ModalTarget></ModalTarget>
         </>

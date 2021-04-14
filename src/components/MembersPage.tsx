@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import MembersCard from './MembersCard'
+import MembersTable from './MembersTable'
 import ModalMemberAdd from './ModalMemberAdd';
 import OperationPageHeader from './OperationPageHeader'
 import { CreateTypes } from './ReviewPage'
@@ -27,7 +27,7 @@ function MembersPage() {
                 <OperationPageHeader title="Участники поиска" isBurger={true} operationName="Поиск кота" call={true} modelType={CreateTypes.ModalMemberAdd}></OperationPageHeader>
             </div>
             <div className="col-md-8 col-12 members-table">
-                <MembersCard></MembersCard>
+                <MembersTable></MembersTable>
             </div>
             <ModalMemberAdd></ModalMemberAdd>
 

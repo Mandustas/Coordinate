@@ -1,6 +1,6 @@
 import React from 'react'
-import MapPreview from './MapPreview'
-import OperationPageHeader from './OperationPageHeader'
+import MapPreview from './-MapPreview'
+import OperationPageHeader from '../OperationPageHeader'
 
 function ReviewPageMapArea() {
     return (

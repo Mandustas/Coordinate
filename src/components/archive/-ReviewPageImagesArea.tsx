@@ -1,6 +1,6 @@
 import React from 'react'
 import ImagesPreview from './-ImagesPreview'
-import OperationPageHeader from './OperationPageHeader'
+import OperationPageHeader from '../OperationPageHeader'
 
 function ReviewPageImagesArea() {
     return (
