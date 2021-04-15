@@ -26,13 +26,12 @@ function MissionsPage() {
     }, []);
 
     return (
-        <div className="row mission-page-container">
+        <div className="row mission-page-container" id="MissionPage">
             <div className="col-md-4 col-12 objects-page-map">
-                <OperationPageHeader title="Миссии поиска" isBurger={true} operationName="" modelType={CreateTypes.ModalObjectAdd}></OperationPageHeader>
+                <OperationPageHeader title="Миссии поиска" isBurger={true}></OperationPageHeader>
                 <MissionCard></MissionCard>
                 <MissionCard></MissionCard>
                 <MissionCard></MissionCard>
-                <ModalObjectAdd></ModalObjectAdd>
             </div>
             <div className="col-md-8 col-12 objects-page-map-container" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>

@@ -19,7 +19,7 @@ export enum FilterTypes {
 function ReviewPage() {
     return (
         <div className="row">
-            <div className="col-md-5 col-12" id="OperationPageContainerTargets">
+            <div className="col-md-4 col-12" id="OperationPageContainerTargets">
                 {/* <ReviewPageMapArea></ReviewPageMapArea> */}
                 <ReviewPageTargerArea></ReviewPageTargerArea>
             </div>
@@ -28,7 +28,7 @@ function ReviewPage() {
                 
             </div> */}
 
-            <div className="col-md-7 col-12" id="OperationPageContainerMembers">
+            <div className="col-md-8 col-12" id="OperationPageContainerMembers">
                 <ReviewPageMembersArea></ReviewPageMembersArea>
             </div>
         </div>

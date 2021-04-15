@@ -2,7 +2,12 @@ import React from 'react'
 import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 
-function ModalObjectAdd() {
+export interface ModalObjectAddState{
+    x?: number
+    y?: number
+}
+
+function ModalObjectAdd({x, y}:ModalObjectAddState) {
     return (
         <>
             <Modal modelType={CreateTypes.ModalObjectAdd}>
@@ -27,11 +32,11 @@ function ModalObjectAdd() {
                             <div className="d-flex">
                                 <div className="col d-flex align-items-center">
                                     <label htmlFor="" style={{ margin: "10px" }}>N: </label>
-                                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder="53.183721"></input>
+                                    <input type="text" className="form-control" id="formGroupExampleInput" value={x}></input>
                                 </div>
                                 <div className="col d-flex align-items-center">
                                     <label htmlFor="" style={{ margin: "10px" }}>W: </label>
-                                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder=" 34.198288"></input>
+                                    <input type="text" className="form-control" id="formGroupExampleInput" value={y} ></input>
                                 </div>
                             </div>
                         </div>

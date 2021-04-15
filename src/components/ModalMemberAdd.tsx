@@ -7,7 +7,7 @@ function ModalMemberAdd() {
             <Modal modelType={CreateTypes.ModalMemberAdd}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Оповещение участников о ПСР</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -16,7 +16,7 @@ function ModalMemberAdd() {
                         <div className="form-group">
 
                             <div className="form-group">
-                                <textarea className="form-control" id="usersCallTextArea" style={{ height: "200px" }} placeholder="Введите сообщение для участников поиска"></textarea>
+                                <textarea className="form-control" id="usersCallTextArea" style={{ height: "250px" }} placeholder="Введите сообщение для участников поиска"></textarea>
                             </div>
                         </div>
                     </form>

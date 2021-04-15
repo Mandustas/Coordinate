@@ -18,8 +18,8 @@ function OperationCard({isActive}:OperationCard) {
                     <h5 className="card-title">Название операции</h5>
                     <p className="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non recusandae dolor adipisci doloribus accusamus, asperiores</p>
                     <div className="d-flex justify-content-between">
-                        <p className="card-text">Учаcтников: 12</p>
-                        <p className="card-text">Целей: 3</p>
+                        <div className="card-text">Учаcтников: 12</div>
+                        <div className="card-text">Целей: 3</div>
                     </div>
                 </div>
             </div>

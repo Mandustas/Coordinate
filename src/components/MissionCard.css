@@ -3,9 +3,38 @@
     -webkit-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
     -moz-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
     box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
-    
 }
 
 .mission-card:hover {
     background-color: #f8f9fa;
+}
+
+.delete-object-button {
+    display: block;
+    font-size: small;
+}
+.mission-object-item:hover {
+    
+    border: 1px solid lightgray;
+}
+
+.delete-object-button-active{
+    display: block;
+}
+.fa-times-thin:before {
+	content: '\00d7';
+}
+
+.fa-times-thin:hover{
+    font-weight: bold;
+    
+}
+.add-object-to-mission:hover{
+    font-weight: 500;
+    /* border-bottom: 1px solid lightgray ; */
+
+}
+.delete-mission:hover{
+    font-weight: 500;
+    /* border-bottom: 1px solid lightgray ; */
 }

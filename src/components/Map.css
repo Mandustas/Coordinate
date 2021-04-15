@@ -6,3 +6,6 @@
         z-index: 1000;
     
     }
+    .leaflet-marker-icon  {
+        background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+    }
