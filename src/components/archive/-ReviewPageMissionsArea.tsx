@@ -1,7 +1,7 @@
 import React from 'react'
 import MissionCard from '../MissionCard'
 import OperationPageHeader from '../OperationPageHeader'
-import ModalMissionAdd from './-ModalMissionAdd'
+import ModalMissionAdd from '../ModalMissionAdd'
 import { CreateTypes } from '../ReviewPage'
 
 function ReviewPageMissionsArea() {

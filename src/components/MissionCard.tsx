@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react'
 import "../components/MissionCard.css"
 import $ from 'jquery'
-import {map} from "../components/Map"
-
-
+import { map } from "../components/Map"
 
 function MissionCard() {
 
     function flyToLatLng(lat: any, lng: any) {
         map.flyTo([lat, lng], 15);
     };
+
+    function deleteMissionObject(id: number) {
+        alert("object " + id + " deleted from mission")
+    }
+
+    function missionDeleteHandler(id: number) {
+        alert("mission " + id + "deleted")
+    }
 
     useEffect(() => {
         const mouseTarget: any = document.getElementsByClassName('mission-object-item');
@@ -42,73 +48,45 @@ function MissionCard() {
                 // deleteButton[i].classList.toggle("delete-object-button-active");
             });
         }
-
-
     })
-
-
 
     return (
         <div className="col">
             <div className="card mission-card mb-2">
                 <div className="card-body text-dark">
                     <div className="d-flex w-100 justify-content-between">
-                        <h5 className="mb-1">Миссия</h5>
-
+                        <div className="d-flex align-items-center">
+                            <h5 className="mb-1" style={{ paddingRight: "10px" }}>Миссия </h5>
+                            <i className="fa fa-trash-o mission-delete-button" style={{ fontSize: "16px" }} onClick={() => missionDeleteHandler(1)}></i>
+                        </div>
                         <small className="text-muted">Андрей Подоляко</small>
                     </div>
                     <div className="row">
-                        <div className="col-md-6 col-xl-8">
-                            <div className="row">
-                                <div className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
-                                    <div className="object-name" onClick={() => flyToLatLng(32,32)}>
-                                        Объект #1
+                        <div onClick={() => flyToLatLng(53.22104557790858, 34.11112667059104)} className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+                            <div className="object-name" >
+                                Объект #1
                                     </div>
-                                    <div className="delete-object-button">
-                                        <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
-                                    <div className="object-name">
-                                        Объект #1
-                                    </div>
-                                    <div className="delete-object-button">
-                                        <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
-                                    <div className="object-name">
-                                        Объект #1
-                                    </div>
-                                    <div className="delete-object-button">
-                                        <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
-                                    <div className="object-name">
-                                        Объект #1
-                                    </div>
-                                    <div className="delete-object-button">
-                                        <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
-                                    <div className="object-name">
-                                        Объект #1
-                                    </div>
-                                    <div className="delete-object-button">
-                                        <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
-                                    </div>
-                                </div>
+                            <div className="delete-object-button" onClick={() => deleteMissionObject(1)}>
+                                <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
                             </div>
-
                         </div>
-                        <div className="col-md-4 col-xl-4" style={{ borderLeft: "1px solid darkgray" }}>
-                            <div className="add-object-to-mission">Добавить объект</div>
-                            <div className="delete-mission">Удалить миссию</div>
+                        <div onClick={() => flyToLatLng(53.24104557790858, 34.15012667059104)} className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+                            <div className="object-name" >
+                                Объект #2
+                                    </div>
+                            <div className="delete-object-button" onClick={() => deleteMissionObject(1)}>
+                                <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div onClick={() => flyToLatLng(53.23204557790858, 34.12212667059104)} className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+                            <div className="object-name" >
+                                Объект #3
+                                    </div>
+                            <div className="delete-object-button" onClick={() => deleteMissionObject(1)}>
+                                <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

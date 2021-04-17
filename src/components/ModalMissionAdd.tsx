@@ -1,8 +1,8 @@
 import React from 'react'
-import MemberSelect from './-MemberSelect'
-import Modal from '../Modal'
-import ObjectSelect from './-ObjectSelect'
-import { CreateTypes } from '../ReviewPage'
+import MemberSelect from './archive/-MemberSelect'
+import Modal from './Modal'
+import ObjectSelect from './archive/-ObjectSelect'
+import { CreateTypes } from './ReviewPage'
 
 function ModalMissionAdd() {
     return (
@@ -14,16 +14,12 @@ function ModalMissionAdd() {
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
-                <div className="modal-body">
+                <div className="modal-body" style={{height:"350px"}}>
                     <form>
                         <div className="form-group">
                             <label>Участник поиска:</label>
                             <MemberSelect></MemberSelect>
 
-                        </div>
-                        <div className="form-group" style={{ height: "300px" }}>
-                            <label>Объект поиска:</label>
-                            <ObjectSelect></ObjectSelect>
                         </div>
                     </form>
                 </div>

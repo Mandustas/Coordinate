@@ -59,8 +59,8 @@ export let map: any;
 
 function Map() {
     // const greenOptions = { color: 'green', fillColor: 'green' }
-    const [x, setX] = useState(53.260478333890894);
-    const [y, setY] = useState(34.340478733711414);
+    const [x, setX] = useState(parseFloat(points.points[0].x));
+    const [y, setY] = useState(parseFloat(points.points[0].y));
     // const [map, setMap] = useState("");
     useEffect(() => {
         if (map != undefined) { map.remove(); }
@@ -84,8 +84,6 @@ function Map() {
 
         }
         map.on('dblclick', onMapClick);
-
-        
     });
 
 

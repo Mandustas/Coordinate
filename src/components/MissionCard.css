@@ -14,8 +14,7 @@
     font-size: small;
 }
 .mission-object-item:hover {
-    
-    border: 1px solid lightgray;
+    font-weight: bolder;
 }
 
 .delete-object-button-active{
@@ -29,12 +28,11 @@
     font-weight: bold;
     
 }
-.add-object-to-mission:hover{
-    font-weight: 500;
-    /* border-bottom: 1px solid lightgray ; */
 
-}
 .delete-mission:hover{
     font-weight: 500;
     /* border-bottom: 1px solid lightgray ; */
+}
+.mission-delete-button:hover{
+    font-weight: bold;
 }

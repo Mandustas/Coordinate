@@ -6,6 +6,7 @@ import $ from "jquery"
 import { CreateTypes } from './ReviewPage'
 import ModalObjectAdd from './ModalObjectAdd'
 import MissionCard from './MissionCard'
+import ModalMissionAdd from './ModalMissionAdd'
 
 function MissionsPage() {
     useEffect(() => {
@@ -28,14 +29,16 @@ function MissionsPage() {
     return (
         <div className="row mission-page-container" id="MissionPage">
             <div className="col-md-4 col-12 objects-page-map">
-                <OperationPageHeader title="Миссии поиска" isBurger={true}></OperationPageHeader>
+                <OperationPageHeader title="Миссии поиска" isBurger={true} modelType={CreateTypes.ModalMissionAdd}></OperationPageHeader>
                 <MissionCard></MissionCard>
                 <MissionCard></MissionCard>
                 <MissionCard></MissionCard>
+
             </div>
             <div className="col-md-8 col-12 objects-page-map-container" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>
             </div>
+            <ModalMissionAdd></ModalMissionAdd>
         </div>
     )
 }
