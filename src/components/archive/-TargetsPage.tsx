@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import ModalTargetAdd from './ModalTargetAdd'
-import OperationPageHeader from './OperationPageHeader'
-import { CreateTypes } from './ReviewPage'
-import TargetCard from './TargetCard'
+import ModalTargetAdd from '../ModalTargetAdd'
+import OperationPageHeader from '../OperationPageHeader'
+import { CreateTypes } from '../ReviewPage'
+import TargetCard from '../TargetCard'
 
 function TargetsPage() {
     useEffect(() => {

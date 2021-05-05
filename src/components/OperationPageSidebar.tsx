@@ -43,12 +43,12 @@ function OperationPageSidebar() {
                     <li>
                         <a href="/operation/missions"><i className="fa fa-map-marker sidebar-item-icon"></i> Миссии</a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href="/operation/members"><i className="fa fa-users sidebar-item-icon"></i> Участники</a>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <a href="/operation/targets"><i className="fa fa-bullseye sidebar-item-icon"></i> Цели</a>
-                    </li>
+                    </li> */}
                     <li>
                     </li>
                     <li>

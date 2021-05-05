@@ -6,3 +6,7 @@
 .images-panel{
     overflow: auto;
 }
+
+.App{
+    height: 100%;
+}

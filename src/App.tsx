@@ -6,7 +6,7 @@ import $ from "jquery"
 import Footer from './components/Footer';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Operations from './components/Operations';
-import TargetsPage from './components/TargetsPage';
+import TargetsPage from './components/archive/-TargetsPage';
 import OperationPageSidebar from './components/OperationPageSidebar';
 import MembersPage from './components/MembersPage';
 import ImagesPage from './components/ImagesPage';
@@ -16,8 +16,7 @@ import ReviewPage from './components/ReviewPage';
 
 function App() {
   useEffect(() => {
-    const heightR = $(window).height() as any;
-    $('.App').css("min-height", heightR);
+    
   });
 
   return (

@@ -8,3 +8,61 @@
 .target-card:hover {
     background-color: #f8f9fa;
 }
+
+.target-status-circle {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    margin-left: 10px;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+.target-status-circle.red {
+    background-color: rgb(248, 48, 48);
+    margin: 10px;
+}
+
+.target-status-circle.yellow {
+    background-color: yellow;
+}
+
+.target-status-circle.green {
+    background-color: lime;
+    margin: 10px;
+}
+
+/*CSS*/
+
+.pulse {
+    margin: 10px;
+    display: block;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255, 238, 0, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(255, 238, 0, 0.4);
+        box-shadow: 0 0 0 0 rgba(255, 238, 0, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+}

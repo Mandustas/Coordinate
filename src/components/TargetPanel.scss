@@ -1,0 +1,40 @@
+#TargetPanel {
+    background-color: black;
+    min-width: 20%;
+    min-height: 100px;
+    width: auto;
+    height: min-content;
+    z-index: 3000;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 30px;
+    left: 15px;
+    border-radius: 3px;
+    -webkit-box-shadow: 14px 24px 43px 19px rgba(34, 60, 80, 0.66);
+    -moz-box-shadow: 14px 24px 43px 19px rgba(34, 60, 80, 0.66);
+    box-shadow: 14px 24px 43px 19px rgba(34, 60, 80, 0.66);
+}
+#TargetPanel:hover {
+    cursor: grab;
+    opacity: 0.8;
+}
+
+.targetPanelItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .target-name {
+        color: white;
+        font-weight: bold;
+        font-size: larger;
+    }
+    .confirm {
+        padding: 3px;
+        color: white;
+    }
+    .confirm:hover {
+        border: solid 1px white;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+}
