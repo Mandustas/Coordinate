@@ -30,7 +30,7 @@ function MissionsPage() {
 
     return (
         <div className="row mission-page-container" id="MissionPage">
-            <TargetPanel></TargetPanel>
+            {/* <TargetPanel></TargetPanel> */}
             <div className="col-md-4 col-12 missions-list">
                 <OperationPageHeader title="Миссии поиска" isBurger={true} modelType={CreateTypes.ModalMissionAdd}></OperationPageHeader>
                 <MissionCard></MissionCard>

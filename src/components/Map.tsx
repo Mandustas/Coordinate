@@ -11,7 +11,7 @@ import ReactDOMServer from 'react-dom/server'
 //     height: string
 // }
 
-const points = {
+const FreePoints = {
     "points": [
         {
             "id": 1,
@@ -37,6 +37,67 @@ const points = {
             "x": "53.23204557790858",
             "y": "34.12212667059104",
         },
+        
+    ]
+}
+
+const BusyPoints = {
+    "points": [
+        {
+            "id": 1,
+            "name": "Объект #1",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt error. Repudiandae illo ex, deleniti vel, consectetur beatae non error, vitae assumenda reprehenderit nemo perspiciatis. Eius laborum dicta odio ipsa.",
+            "img": "https://thumbs.dreamstime.com/b/%D0%BB%D0%B5%D1%81-%D1%81%D0%B2%D0%B5%D1%80%D1%85%D1%83-%D0%BB%D0%B5%D1%82%D0%BE%D0%BC-%D0%B2%D0%B8%D0%B4-%D1%81-%D0%B2%D0%BE%D0%B7%D0%B4%D1%83%D1%85%D0%B0-%D0%BE%D0%B1%D0%BE%D0%B5%D0%B2-%D0%BB%D0%B5%D1%81%D0%B0-153275483.jpg",
+            "x": "53.23104557790858",
+            "y": "34.13112667059104",
+        },
+        {
+            "id": 2,
+            "name": "Объект #2",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt error. Repudiandae illo ex, deleniti vel, consectetur beatae non error, vitae assumenda reprehenderit nemo perspiciatis. Eius laborum dicta odio ipsa.",
+            "img": "https://i.pinimg.com/736x/c5/dc/53/c5dc53070960ee2ea4fb07ed2ff325b3.jpg",
+            "x": "53.25104557790858",
+            "y": "34.16012667059104",
+        },
+        {
+            "id": 2,
+            "name": "Объект #3",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt error. Repudiandae illo ex, deleniti vel, consectetur beatae non error, vitae assumenda reprehenderit nemo perspiciatis. Eius laborum dicta odio ipsa.",
+            "img": "https://envato-shoebox-0.imgix.net/4c17/f9ef-0fc2-4571-8819-373327ab564c/trip+mix-12.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=e56aa60d45ab74037c9f43d3a088bbdf",
+            "x": "53.21204557790858",
+            "y": "34.17212667059104",
+        },
+        
+    ]
+}
+
+const InactivePoints = {
+    "points": [
+        {
+            "id": 1,
+            "name": "Объект #1",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt error. Repudiandae illo ex, deleniti vel, consectetur beatae non error, vitae assumenda reprehenderit nemo perspiciatis. Eius laborum dicta odio ipsa.",
+            "img": "https://thumbs.dreamstime.com/b/%D0%BB%D0%B5%D1%81-%D1%81%D0%B2%D0%B5%D1%80%D1%85%D1%83-%D0%BB%D0%B5%D1%82%D0%BE%D0%BC-%D0%B2%D0%B8%D0%B4-%D1%81-%D0%B2%D0%BE%D0%B7%D0%B4%D1%83%D1%85%D0%B0-%D0%BE%D0%B1%D0%BE%D0%B5%D0%B2-%D0%BB%D0%B5%D1%81%D0%B0-153275483.jpg",
+            "x": "53.28104557790858",
+            "y": "34.10112667059104",
+        },
+        {
+            "id": 2,
+            "name": "Объект #2",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt error. Repudiandae illo ex, deleniti vel, consectetur beatae non error, vitae assumenda reprehenderit nemo perspiciatis. Eius laborum dicta odio ipsa.",
+            "img": "https://i.pinimg.com/736x/c5/dc/53/c5dc53070960ee2ea4fb07ed2ff325b3.jpg",
+            "x": "53.21104557790858",
+            "y": "34.11012667059104",
+        },
+        {
+            "id": 2,
+            "name": "Объект #3",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, deserunt error. Repudiandae illo ex, deleniti vel, consectetur beatae non error, vitae assumenda reprehenderit nemo perspiciatis. Eius laborum dicta odio ipsa.",
+            "img": "https://envato-shoebox-0.imgix.net/4c17/f9ef-0fc2-4571-8819-373327ab564c/trip+mix-12.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=700&s=e56aa60d45ab74037c9f43d3a088bbdf",
+            "x": "53.21204557790858",
+            "y": "34.18212667059104",
+        },
+        
     ]
 }
 
@@ -68,8 +129,8 @@ export let map: any;
 
 function Map() {
     // const greenOptions = { color: 'green', fillColor: 'green' }
-    const [x, setX] = useState(parseFloat(points.points[0].x));
-    const [y, setY] = useState(parseFloat(points.points[0].y));
+    const [x, setX] = useState(parseFloat(FreePoints.points[0].x));
+    const [y, setY] = useState(parseFloat(FreePoints.points[0].y));
     // const [map, setMap] = useState("");
     useEffect(() => {
         if (map != undefined) { map.remove(); }
@@ -77,13 +138,26 @@ function Map() {
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        points.points.forEach(element => {
+        FreePoints.points.forEach(element => {
+            return L.marker([parseFloat(element.x), parseFloat(element.y)], {
+                icon: FreeIcon,
+                draggable: true,
+            }).addTo(map).bindPopup(ReactDOMServer.renderToString(<ObjectPopup id={element.id} name={element.name} description={element.description} img={element.img} x={element.x} y={element.y} />));
+        });
+
+        BusyPoints.points.forEach(element => {
+            return L.marker([parseFloat(element.x), parseFloat(element.y)], {
+                icon: BusyIcon,
+                draggable: true,
+            }).addTo(map).bindPopup(ReactDOMServer.renderToString(<ObjectPopup id={element.id} name={element.name} description={element.description} img={element.img} x={element.x} y={element.y} />));
+        });
+
+        InactivePoints.points.forEach(element => {
             return L.marker([parseFloat(element.x), parseFloat(element.y)], {
                 icon: InactiveIcon,
                 draggable: true,
             }).addTo(map).bindPopup(ReactDOMServer.renderToString(<ObjectPopup id={element.id} name={element.name} description={element.description} img={element.img} x={element.x} y={element.y} />));
         });
-        console.log("repaint");
 
         function onMapClick(e: any) {
             setX(e.latlng.lat)

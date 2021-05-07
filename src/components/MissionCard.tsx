@@ -86,6 +86,22 @@ function MissionCard() {
                                 <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <div onClick={() => flyToLatLng(53.23204557790858, 34.12212667059104)} className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+                            <div className="object-name" >
+                                Объект #3
+                                    </div>
+                            <div className="delete-object-button" onClick={() => deleteMissionObject(1)}>
+                                <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div onClick={() => flyToLatLng(53.23204557790858, 34.12212667059104)} className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+                            <div className="object-name" >
+                                Объект #3
+                                    </div>
+                            <div className="delete-object-button" onClick={() => deleteMissionObject(1)}>
+                                <i className="fa fa-times-thin fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

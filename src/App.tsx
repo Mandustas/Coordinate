@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Container from './components/Container';
 import Header from './components/Header'
@@ -13,6 +13,7 @@ import ImagesPage from './components/ImagesPage';
 import MissionsPage from './components/MissionsPage';
 import CreateOperation from './components/archive/-CreateOperation';
 import ReviewPage from './components/ReviewPage';
+import TargetPanel from './components/TargetPanel';
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
       <Header></Header>
       <div className="overlay"></div>  {/* Для затемнения сайдбара */}
       <OperationPageSidebar></OperationPageSidebar>
+      <TargetPanel></TargetPanel>
       <BrowserRouter>
         <Container>
           <Switch>

@@ -18,10 +18,10 @@ function TargetPanelItem({ status }: TargetPanelItemProps) {
     }
 
     return (
-        <div className="targetPanelItem">
+        <div className={`targetPanelItem  `}>
             <div style={{display:'flex'}}>
                 {statusPic}
-                <div className="target-name">Цель поиска</div>
+                <div className={`target-name ${status == TargetStatuses.Attention ? "shake-horizontal" : null}`}>Цель поиска</div>
             </div>
 
             {status == TargetStatuses.Attention ? <div className=" fa fa-check confirm"></div> : null}
