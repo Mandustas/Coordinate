@@ -19,9 +19,6 @@ function ModalOperationCreate() {
                             <div className="d-flex">
                                 <input type="text" className="form-control border border-dark" id="exampleFormControlInput1" placeholder="Введите название операции">
                                 </input>
-                                {/* <input type="submit" className="btn btn-outline-dark" style={{marginLeft:"10px"}}></input>
-                            <input type="submit" className="btn btn-outline-dark" style={{marginLeft:"10px"}}></input> */}
-                                {/* <button className="btn btn-outline-dark" type="submit" style={{ marginLeft: "10px" }}><i className="fa fa-check" aria-hidden="true"></i></button> */}
                             </div>
                         </div>
                     </form>

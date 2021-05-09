@@ -9,3 +9,12 @@
 .operation-card:hover {
     background-color: #f8f9fa;
 }
+
+.operation-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.operation-card-date{
+    display: flex;
+    align-items: center;
+}

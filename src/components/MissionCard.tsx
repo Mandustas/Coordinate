@@ -21,8 +21,6 @@ function MissionCard() {
         const mouseTarget: any = document.getElementsByClassName('mission-object-item');
         const deleteButton: any = document.querySelector('.delete-object-button');
 
-        console.log(deleteButton);
-
         // mouseTarget[0].addEventListener('mouseenter', (e: any) => {
         //     // mouseTarget.style.border = '5px dotted orange';
         //     console.log("hover");
@@ -35,19 +33,19 @@ function MissionCard() {
         //     // mouseTarget.style.border = '1px solid #333';
         // });
 
-        for (var i = 0; i < mouseTarget.length; i++) {
-            mouseTarget[i].addEventListener('mouseenter', (e: any) => {
-                console.log("hover")
-                // deleteButton[i].classList.toggle("delete-object-button-active")
-                // deleteButton[i].innerHTML = "<i style={{ fontWeight: 100 }} className='fa fa-times' aria-hidden='true'></i>";
+        // for (var i = 0; i < mouseTarget.length; i++) {
+        //     mouseTarget[i].addEventListener('mouseenter', (e: any) => {
+        //         console.log("hover")
+        //         // deleteButton[i].classList.toggle("delete-object-button-active")
+        //         // deleteButton[i].innerHTML = "<i style={{ fontWeight: 100 }} className='fa fa-times' aria-hidden='true'></i>";
 
-            });
+        //     });
 
-            mouseTarget[i].addEventListener('mouseleave', (e: any) => {
-                console.log("unhover")
-                // deleteButton[i].classList.toggle("delete-object-button-active");
-            });
-        }
+        //     mouseTarget[i].addEventListener('mouseleave', (e: any) => {
+        //         console.log("unhover")
+        //         // deleteButton[i].classList.toggle("delete-object-button-active");
+        //     });
+        // }
     })
 
     return (
