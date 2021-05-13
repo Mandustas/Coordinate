@@ -1,13 +1,22 @@
 import React from 'react'
+import { MembersTableProps } from './MembersTable'
 
-function MemberLine() {
+export interface MemberLine{
+    key: number;
+    id: number;
+    tableIndex: number;
+    firstName: string;
+    secondName: string;
+
+}
+
+function MemberLine({tableIndex, firstName,secondName}:MemberLine) {
     return (
         <tbody>
             <tr>
-                <th scope="row">1</th>
-                <td>Андрей</td>
-                <td>Подоляко</td>
-                <td>2</td>
+                <th scope="row">{tableIndex}</th>
+                <td>{firstName}</td>
+                <td>{secondName}</td>
             </tr>
         </tbody>
     )

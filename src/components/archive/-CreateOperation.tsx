@@ -25,8 +25,8 @@ function CreateOperation() {
                 </form>
                 <OperationPageHeader title="Цели поиска" isBurger={false} modelType={CreateTypes.ModalTargetCreate}></OperationPageHeader>
 
-                <TargetCard></TargetCard>
-                <TargetCard></TargetCard>
+                {/* <TargetCard></TargetCard>
+                <TargetCard></TargetCard> */}
 
                 <ModalTarget></ModalTarget>
                 <ModalTargetAdd></ModalTargetAdd>
@@ -34,7 +34,7 @@ function CreateOperation() {
             </div>
             <div className="col-md-8 col-12">
                 <OperationPageHeader title="Участники" isBurger={false} modelType={CreateTypes.ModalMemberAdd}></OperationPageHeader>
-                <MembersTable></MembersTable>
+                {/* <MembersTable></MembersTable> */}
                 <ModalMemberAdd></ModalMemberAdd>
             </div>
         </div>

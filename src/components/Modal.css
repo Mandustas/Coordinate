@@ -5,3 +5,8 @@
 .object-popup-add-mission{
     
 }
+
+.form-error-msg{
+    color: lightcoral;
+    font-size: small;
+}

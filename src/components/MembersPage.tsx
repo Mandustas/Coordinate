@@ -27,7 +27,7 @@ function MembersPage() {
                 <OperationPageHeader title="Участники поиска" isBurger={true} operationName="Поиск кота" call={true} modelType={CreateTypes.ModalMemberAdd}></OperationPageHeader>
             </div>
             <div className="col-md-8 col-12 members-table">
-                <MembersTable></MembersTable>
+                {/* <MembersTable></MembersTable> */}
             </div>
             <ModalMemberAdd></ModalMemberAdd>
 

@@ -22,6 +22,5 @@ interface FetchOperationsErrorAction{
     payload: string;
 }
 
-
 export type OperationAction = FetchOperationsAction | FetchOperationsSuccessAction | FetchOperationsErrorAction
 

@@ -11,6 +11,10 @@ import { CreateTypes, FilterTypes } from './ReviewPage';
 
 function Operations() {
     const { error, loading, operations } = useTypedSelector(state => state.operation)
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
+    
+    console.log(activeOperation);
+    
     const { fetchOperations } = useActions()
     useEffect(() => {
         fetchOperations()
@@ -20,7 +24,7 @@ function Operations() {
     return (
         <div className="row">
             <div className="col-md-4 col-12">
-                <OperationPageHeader title="Активная операция" isBurger={false} modelType={CreateTypes.ModalOperationAdd}></OperationPageHeader>
+                <OperationPageHeader title="Активная операция" isBurger={false} modelType={CreateTypes.ModalOperationAdd} disabled={activeOperation != null ? true : false}></OperationPageHeader>
                 <div className="row">
                     {
                         operations.map(operation => {
@@ -32,7 +36,7 @@ function Operations() {
                             } else {
                                 return null;
                             }
-                            
+
                         })
                     }
                 </div>
@@ -40,7 +44,7 @@ function Operations() {
             <div className="col-md-8 col-12">
                 <OperationPageHeader title="История операций" isBurger={false} filter={true} filterType={FilterTypes.ModalOperationsHistoryFilter}></OperationPageHeader>
                 <div className="row">
-                {
+                    {
                         operations.map(operation => {
                             if (operation.isSuccess) {
                                 const targets = operation.targets.length;
@@ -50,7 +54,6 @@ function Operations() {
                             } else {
                                 return null;
                             }
-                            
                         })
                     }
                 </div>

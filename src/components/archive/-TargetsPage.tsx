@@ -28,9 +28,9 @@ function TargetsPage() {
                 <OperationPageHeader title="Цели поиска" isBurger={true} operationName="Поиск кота" modelType={CreateTypes.ModalTargetCreate}></OperationPageHeader>
             </div>
             <div className="col-md-8 col-12 members-table">
+                {/* <TargetCard></TargetCard>
                 <TargetCard></TargetCard>
-                <TargetCard></TargetCard>
-                <TargetCard></TargetCard>
+                <TargetCard></TargetCard> */}
             </div>
             <ModalTargetAdd></ModalTargetAdd>
 

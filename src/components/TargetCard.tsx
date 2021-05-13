@@ -1,18 +1,36 @@
 import "../components/TargetCard.css"
+import { TargetStatuses } from "./TargetPanel";
 
-function TargetCard() {
+export interface TargerCardProps {
+    id: number;
+    key: number;
+    title: string;
+    date: any;
+    description: string;
+    status: number
+
+}
+function TargetCard({ id, key, title, date, description, status }: TargerCardProps) {
+    let statusPic;
+    if (status == TargetStatuses.Finded) {
+        statusPic = <div className="target-status-circle green "></div>
+    } else if (status == TargetStatuses.Attention) {
+        statusPic = <div className="target-status-circle yellow pulse"></div>
+    } else if (status == TargetStatuses.NotFound) {
+        statusPic = <div className="target-status-circle red"></div>
+    }
     return (
         <div className="col">
             <div className="card target-card mt-2 mb-1 " data-bs-toggle="modal" data-bs-target=".modal-target">
                 <div className="card-body text-dark">
                     <div className="d-flex w-100 justify-content-between">
                         <div className="d-flex align-items-center">
-                            <div className="target-status-circle yellow pulse pulse-yellow"></div>
-                            <h5 className="mb-1">Цель поиска</h5>
+                            {statusPic}
+                            <h5 className="mb-1">{title}</h5>
                         </div>
-                        <small className="text-muted">25.03.2021 17:42</small>
+                        <small className="text-muted">{date}</small>
                     </div>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p className="card-text">{description}</p>
                 </div>
             </div>
         </div>

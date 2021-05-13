@@ -11,9 +11,10 @@ export interface OperationPageHeaderProps {
     call?: boolean
     filter?: boolean
     filterType?: string
+    disabled?: boolean
 }
 
-function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter,filterType }: OperationPageHeaderProps) {
+function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter, filterType, disabled: idDisabled }: OperationPageHeaderProps) {
 
     function handleClick() {
         if (href != undefined && href != null && href != "") {
@@ -54,7 +55,7 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
                 : null
             }
             {(modelType != undefined && modelType != null && modelType != "") || (pageAddHref != undefined && pageAddHref != null && pageAddHref != "")
-                ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
+                ? <div className={`btn header-add-button ${idDisabled ? "disabled" : null}`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
                     <i className={`fa  ${call == true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
                 </div>
                 : null

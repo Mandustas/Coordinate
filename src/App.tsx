@@ -14,22 +14,35 @@ import MissionsPage from './components/MissionsPage';
 import CreateOperation from './components/archive/-CreateOperation';
 import ReviewPage from './components/ReviewPage';
 import TargetPanel from './components/TargetPanel';
+import { useActions } from './hooks/useActions';
+import { useTypedSelector } from './hooks/useTypedSelector';
 
 function App() {
+  const { error, loading, activeOperation } = useTypedSelector(state => state.activeOperation)
+  const { fetchActiveOperations } = useActions()
   useEffect(() => {
-    
-  });
-
+    fetchActiveOperations()
+  }, [])
+  console.log(activeOperation);
   return (
     <div className="App">
       <Header></Header>
       <div className="overlay"></div>  {/* Для затемнения сайдбара */}
       <OperationPageSidebar></OperationPageSidebar>
-      <TargetPanel></TargetPanel>
+      {
+        activeOperation != null
+          ? <TargetPanel></TargetPanel>
+          : null
+      }
+
+
       <BrowserRouter>
         <Container>
           <Switch>
-            <Route exact path='/' component={MissionsPage}></Route>
+            <Route exact path='/' component={activeOperation != null
+              ? MissionsPage
+              : Operations}>
+            </Route>
             <Route path='/operations' component={Operations}></Route>
             <Route path='/operation/review' component={ReviewPage}></Route>
             <Route path='/operation/targets' component={TargetsPage}></Route>
