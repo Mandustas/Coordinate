@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import ModalTarget from './ModalTarget'
 import ModalTargetAdd from './ModalTargetAdd'
@@ -7,7 +9,10 @@ import TargetCard from './TargetCard'
 
 function ReviewPageTargerArea() {
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
-    
+    const { fetchOperations } = useActions()
+    useEffect(() => {
+        fetchOperations()
+    }, [])
     return (
         <>
             <OperationPageHeader operationName={activeOperation!=null ? activeOperation.title : "Операция"} title="Цели поиска " isBurger={true} modelType={CreateTypes.ModalTargetCreate}></OperationPageHeader>

@@ -7,41 +7,39 @@ import { CreateTypes } from './ReviewPage'
 import MissionCard from './MissionCard'
 import ModalMissionAdd from './ModalMissionAdd'
 import TargetPanel from './TargetPanel'
+import { useTypedSelector } from '../hooks/useTypedSelector'
+import { useActions } from '../hooks/useActions'
 
 function MissionsPage() {
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
+    const { fetchOperations } = useActions()
+
     useEffect(() => {
-        function handleResize() {
-            // const headerHeight = $("#AppHeader").outerHeight() as any;
-            // const height = $(window).height() as any;
-            // $('.mission-page-container .missions-page-map-container').css("height", height - headerHeight);
+        fetchOperations()
+    }, [])
 
-        }
+    console.log(activeOperation);
 
-        window.addEventListener("resize", handleResize);
-
-        handleResize();
-
-        return () => {
-            window.removeEventListener("resize", handleResize)
-        };
-
-
-    }, []);
+    let usersActive:any;
 
     return (
         <div className="row mission-page-container" id="MissionPage">
             {/* <TargetPanel></TargetPanel> */}
             <div className="col-md-4 col-12 missions-list">
                 <OperationPageHeader title="Миссии поиска" isBurger={true} modelType={CreateTypes.ModalMissionAdd}></OperationPageHeader>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
-                <MissionCard></MissionCard>
+
+                {
+                    activeOperation != null
+                        ? usersActive = activeOperation.users.map(() => {
+                           
+                            
+                        })
+                        : null
+                }
+    {
+        console.log(usersActive)
+        
+    }
             </div>
             <div className="col-md-8 col-12" id="MapContainer" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>

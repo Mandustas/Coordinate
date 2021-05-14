@@ -1,34 +1,32 @@
 import React, { useEffect } from 'react'
-import $ from 'jquery';
 import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
-import { number } from 'yup/lib/locale'
 import { useTypedSelector } from '../hooks/useTypedSelector'
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { useActions } from '../hooks/useActions'
 
 function ModalTargetAdd() {
     const validationSchema = yup.object().shape({
         title: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         description: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
-        targetTypeId: yup.number().required("Выберите значение типа")
+        targetTypeId: yup.number().required("Выберите значение типа"),
+        lostTime: yup.date().required()
     })
+    
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
-    const dateNow = new Date()
-    const date = ('0' + dateNow.getDate()).slice(-2);
-    const month = ('0' + (dateNow.getMonth() + 1)).slice(-2);
-    const year = dateNow.getFullYear();
-    const hours = ('0' + dateNow.getHours()).slice(-2);
-    const minutes = ('0' + dateNow.getMinutes()).slice(-2);
-    const seconds = ('0' + dateNow.getSeconds()).slice(-2);
-
-    const time = `${date}-${month}-${year}, ${hours}:${minutes}:${seconds}`;
+    const { fetchActiveOperations } = useActions()
 
     useEffect(() => {
-        // $('#datetimepicker1').datetimepicker();
-        // return () => {
-        // }
+        fetchActiveOperations()
+
     }, [])
 
     return (
@@ -49,7 +47,7 @@ function ModalTargetAdd() {
                         description: "",
                         targetTypeId: 1,
                         operationId: 0,
-                        lostTime: time
+                        lostTime: null
 
                     }}
                     validateOnBlur
@@ -73,10 +71,12 @@ function ModalTargetAdd() {
                         } catch (error) {
                             console.log(error);
                         }
+                        window.location.reload()
+
                     }}
                     validationSchema={validationSchema}
                 >
-                    {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
+                    {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, setFieldValue }) => (
                         <div className="">
                             <Form>
                                 <div className="modal-body">
@@ -126,23 +126,42 @@ function ModalTargetAdd() {
                                         {touched.targetTypeId && errors.targetTypeId && <p className="form-error-msg">{errors.targetTypeId}</p>}
                                     </div>
 
-
-
-                                    <div className="form-group">
-                                        <label htmlFor="">Дата пропажи:</label>
-                                        <input
-                                            type={"text"}
-                                            className="form-control"
-                                            id="exampleFormControlInput4"
-                                            placeholder="Укажите дату пропажи цели"
-                                            name={`lostTime`}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.lostTime}
-                                        >
-                                        </input>
-                                        {touched.lostTime && errors.lostTime && <p className="form-error-msg">{errors.lostTime}</p>}
+                                    <div className="form-group mt-3 d-flex ">
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                            <KeyboardDatePicker
+                                                id="date-picker-dialog"
+                                                name="lostTime"
+                                                style={{width: "100%"}}
+                                                label="Дата пропажи"
+                                                inputVariant="outlined"
+                                                format="dd/MM/yyyy"
+                                                value={values.lostTime}
+                                                onChange={value => setFieldValue("lostTime", value)}
+                                                KeyboardButtonProps={{
+                                                    "aria-label": "change date"
+                                                }}
+                                            />
+                                        </MuiPickersUtilsProvider>
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                            <KeyboardTimePicker
+                                                id="time-picker-dialog"
+                                                name="lostTime"
+                                                ampm={false}
+                                                style={{width: "100%"}}
+                                                label="Время пропажи"
+                                                inputVariant="outlined"
+                                                value={values.lostTime}
+                                                onChange={value => setFieldValue("lostTime", value)}
+                                                KeyboardButtonProps={{
+                                                    "aria-label": "change date"
+                                                }}
+                                            />
+                                        </MuiPickersUtilsProvider>
                                     </div>
+
+                                    {/* <div className="form-group mt-3">
+                                        
+                                    </div> */}
 
                                 </div>
                                 <div className="modal-footer">
