@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import "../components/OperationPageHeader.css"
 
 export interface OperationPageHeaderProps {
@@ -17,13 +16,13 @@ export interface OperationPageHeaderProps {
 function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter, filterType, disabled: idDisabled }: OperationPageHeaderProps) {
 
     function handleClick() {
-        if (href != undefined && href != null && href != "") {
+        if (href !== undefined && href != null && href !== "") {
             document.location.href = String(href)
         }
     }
 
     function handleCreateClick() {
-        if (pageAddHref != undefined && pageAddHref != null && pageAddHref != "") {
+        if (pageAddHref !== undefined && pageAddHref != null && pageAddHref !== "") {
             document.location.href = String(pageAddHref)
         } else {
             return
@@ -42,21 +41,21 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
                 }
 
 
-                <a className={`navbar-brand  ${href != undefined && href != null && href != "" ? 'operation-page-header-underline' : ''}`} onClick={handleClick} href={href} style={{ marginRight: 0, marginLeft: 10 }}>
-                    {operationName != undefined && operationName != null && operationName != ""
+                <a className={`navbar-brand  ${href !== undefined && href != null && href !== "" ? 'operation-page-header-underline' : ''}`} onClick={handleClick} href={href} style={{ marginRight: 0, marginLeft: 10 }}>
+                    {operationName !== undefined && operationName != null && operationName !== ""
                         ? operationName + ' /' : ''
                     } {title}
                 </a>
             </div>
-            {filter == true
+            {filter === true
                 ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${filterType}`} >
                     <i className="fa fa-filter"></i>
                 </div>
                 : null
             }
-            {(modelType != undefined && modelType != null && modelType != "") || (pageAddHref != undefined && pageAddHref != null && pageAddHref != "")
+            {(modelType !== undefined && modelType != null && modelType !== "") || (pageAddHref !== undefined && pageAddHref != null && pageAddHref !== "")
                 ? <div className={`btn header-add-button ${idDisabled ? "disabled" : null}`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
-                    <i className={`fa  ${call == true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
+                    <i className={`fa  ${call === true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
                 </div>
                 : null
             }

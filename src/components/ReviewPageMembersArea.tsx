@@ -12,10 +12,10 @@ function ReviewPageMembersArea() {
             <OperationPageHeader modelType={CreateTypes.ModalMemberAdd} title="Участники поиска" isBurger={false} call={true}></OperationPageHeader>
             {
                 activeOperation != null
-                ? <MembersTable users={activeOperation.users}></MembersTable>
-                : null
+                    ? <MembersTable users={activeOperation.users}></MembersTable>
+                    : null
             }
-            
+
             <ModalMemberAdd></ModalMemberAdd>
         </>
     )

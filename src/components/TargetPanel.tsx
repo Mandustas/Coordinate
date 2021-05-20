@@ -16,7 +16,7 @@ export enum TargetStatuses {
 function TargetPanel() {
 
 
-    const { error, loading, activeOperation } = useTypedSelector(state => state.activeOperation)
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
     useEffect(() => {
         $("#TargetPanel").draggable({ scroll: false });
 

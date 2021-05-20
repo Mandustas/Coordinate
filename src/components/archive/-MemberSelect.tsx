@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import { Fragment } from 'react';
 
 import Select from 'react-select';
 

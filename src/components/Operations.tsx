@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react'
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import { fetchOperations } from '../stores/action-creators/operation';
 import ModalOperationCreate from './ModalOperationCreate';
 import ModalOperationFilter from './ModalOperationFilter';
 import OperationCard from './OperationCard'
@@ -10,11 +8,8 @@ import OperationPageHeader from './OperationPageHeader';
 import { CreateTypes, FilterTypes } from './ReviewPage';
 
 function Operations() {
-    const { error, loading, operations } = useTypedSelector(state => state.operation)
+    const {  operations } = useTypedSelector(state => state.operation)
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
-    
-    console.log(activeOperation);
-    
     const { fetchOperations } = useActions()
     useEffect(() => {
         fetchOperations()

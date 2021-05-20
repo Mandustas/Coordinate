@@ -12,11 +12,11 @@ export interface TargerCardProps {
 }
 function TargetCard({ id, key, title, date, description, status }: TargerCardProps) {
     let statusPic;
-    if (status == TargetStatuses.Finded) {
+    if (status === TargetStatuses.Finded) {
         statusPic = <div className="target-status-circle green "></div>
-    } else if (status == TargetStatuses.Attention) {
+    } else if (status === TargetStatuses.Attention) {
         statusPic = <div className="target-status-circle yellow pulse"></div>
-    } else if (status == TargetStatuses.NotFound) {
+    } else if (status === TargetStatuses.NotFound) {
         statusPic = <div className="target-status-circle red"></div>
     }
 

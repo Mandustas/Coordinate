@@ -8,9 +8,7 @@ function ReviewPageMissionsArea() {
     return (
         <>
             <OperationPageHeader modelType={CreateTypes.ModalMissionAdd} title="Поисковые миссии" isBurger={false} href="/operation/missions"></OperationPageHeader>
-            <MissionCard></MissionCard>
-            <MissionCard></MissionCard>
-            <MissionCard></MissionCard>
+
             <ModalMissionAdd></ModalMissionAdd>
         </>
     )

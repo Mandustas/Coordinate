@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import MembersTable from './MembersTable'
-import ModalMemberAdd from './ModalMemberAdd';
-import OperationPageHeader from './OperationPageHeader'
-import { CreateTypes } from './ReviewPage'
+import MembersTable from '../MembersTable'
+import ModalMemberAdd from '../ModalMemberAdd';
+import OperationPageHeader from '../OperationPageHeader'
+import { CreateTypes } from '../ReviewPage'
 
 function MembersPage() {
     useEffect(() => {

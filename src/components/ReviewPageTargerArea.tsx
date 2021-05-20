@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
-import ModalTarget from './ModalTarget'
 import ModalTargetAdd from './ModalTargetAdd'
 import OperationPageHeader from './OperationPageHeader'
 import { CreateTypes } from './ReviewPage'
@@ -28,7 +27,6 @@ function ReviewPageTargerArea() {
             }
 
             <ModalTargetAdd></ModalTargetAdd>
-            <ModalTarget></ModalTarget>
         </>
     )
 }

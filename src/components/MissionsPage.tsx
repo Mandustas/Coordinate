@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Map from './Map'
 import OperationPageHeader from './OperationPageHeader'
 import "../components/Map.css"
@@ -6,7 +6,6 @@ import "../components/MissionPage.scss"
 import { CreateTypes } from './ReviewPage'
 import MissionCard from './MissionCard'
 import ModalMissionAdd from './ModalMissionAdd'
-import TargetPanel from './TargetPanel'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { useActions } from '../hooks/useActions'
 
@@ -18,9 +17,17 @@ function MissionsPage() {
         fetchOperations()
     }, [])
 
-    console.log(activeOperation);
+    let missionsActive = new Array();
 
-    let usersActive:any;
+
+    if (activeOperation != null) {
+        activeOperation.users.forEach((user: any) => {
+            user.missions.forEach((mission: any) => {
+                missionsActive.push(mission)
+            });
+        });
+    }
+
 
     return (
         <div className="row mission-page-container" id="MissionPage">
@@ -30,16 +37,17 @@ function MissionsPage() {
 
                 {
                     activeOperation != null
-                        ? usersActive = activeOperation.users.map(() => {
-                           
-                            
+                        ? missionsActive.map((mission: any) => {
+                            return (<MissionCard
+                                id={mission.id}
+                                key={mission.id}
+                                detectedObjects={mission.detectedObjects}
+                                memberName={mission.user.firstName + " " + mission.user.secondName}
+                            ></MissionCard>)
                         })
                         : null
                 }
-    {
-        console.log(usersActive)
-        
-    }
+
             </div>
             <div className="col-md-8 col-12" id="MapContainer" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>

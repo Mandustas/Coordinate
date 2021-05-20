@@ -1,7 +1,6 @@
 import React from 'react'
 import MemberSelect from './archive/-MemberSelect'
 import Modal from './Modal'
-import ObjectSelect from './archive/-ObjectSelect'
 import { CreateTypes } from './ReviewPage'
 
 function ModalMissionAdd() {

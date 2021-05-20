@@ -55,8 +55,6 @@ function ModalTargetAdd() {
                         activeOperation != null
                             ? values.operationId = activeOperation.id
                             : values.operationId = 0
-                        let lostTime = values.lostTime;
-                        // // values.lostTime = new Date(values.lostTime)
 
                         let axiosConfig = {
                             headers: {

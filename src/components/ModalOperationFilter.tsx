@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from './Modal'
-import { CreateTypes, FilterTypes } from './ReviewPage'
+import { FilterTypes } from './ReviewPage'
 
 function ModalOperationFilter() {
     return (

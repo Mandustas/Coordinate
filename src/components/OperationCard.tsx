@@ -1,7 +1,6 @@
-import React from 'react'
 import "../components/OperationCard.css"
 
-export interface OperationCard {
+export interface OperationCardProps {
     key: number
     id: number
     title: string
@@ -11,7 +10,7 @@ export interface OperationCard {
     targets: number
     date: any
 }
-function OperationCard({ isActive, title, key, id, coordinator, members, targets, date }: OperationCard) {
+function OperationCard({ isActive, title, key, id, coordinator, members, targets, date }: OperationCardProps) {
 
     function handleClick() {
         document.location.href = "/operation/missions";
@@ -19,7 +18,9 @@ function OperationCard({ isActive, title, key, id, coordinator, members, targets
 
     return (
         < div className={` ${isActive ? 'col-12' : 'col-md-12 col-xl-4 mb-4'} `} onClick={handleClick} >
-            <div className="card operation-card ">
+            <div className="card operation-card "
+                style={{background: "none"}}
+            >
                 <div className="card-body">
                     <div className="operation-card-header">
                         {

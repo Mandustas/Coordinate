@@ -1,6 +1,6 @@
 import React from 'react'
-import Modal from './Modal'
-import { CreateTypes } from './ReviewPage'
+import Modal from '../Modal'
+import { CreateTypes } from '../ReviewPage'
 
 function ModalTarget() {
     return (

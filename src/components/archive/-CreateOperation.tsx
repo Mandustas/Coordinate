@@ -1,7 +1,7 @@
 import React from 'react'
 import MembersTable from '../MembersTable'
 import ModalMemberAdd from '../ModalMemberAdd'
-import ModalTarget from '../ModalTarget'
+import ModalTarget from './-ModalTarget'
 import ModalTargetAdd from '../ModalTargetAdd'
 import OperationPageHeader from '../OperationPageHeader'
 import { CreateTypes } from '../ReviewPage'

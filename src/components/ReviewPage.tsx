@@ -1,4 +1,3 @@
-import { useTypedSelector } from '../hooks/useTypedSelector'
 import ReviewPageMembersArea from './ReviewPageMembersArea'
 import ReviewPageTargerArea from './ReviewPageTargerArea'
 

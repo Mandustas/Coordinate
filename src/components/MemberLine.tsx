@@ -1,7 +1,5 @@
-import React from 'react'
-import { MembersTableProps } from './MembersTable'
 
-export interface MemberLine{
+export interface MemberLineProps{
     key: number;
     id: number;
     tableIndex: number;
@@ -10,7 +8,7 @@ export interface MemberLine{
 
 }
 
-function MemberLine({tableIndex, firstName,secondName}:MemberLine) {
+function MemberLine({tableIndex, firstName,secondName}:MemberLineProps) {
     return (
         <tbody>
             <tr>

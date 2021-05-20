@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import $ from "jquery"
 import "../components/Container.scss"
 
 export interface ContainerProps{
