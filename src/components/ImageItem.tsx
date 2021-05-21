@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import $ from "jquery"
 
-function ImageItem() {
+export interface ImageItemProps {
+    key: number;
+    id: number;
+    path: string;
+}
+
+
+
+function ImageItem({ key, id, path }: ImageItemProps) {
+    useEffect(() => {
+        // $(".fancybox").fancybox({
+        //     openEffect: 'none',
+        //     closeEffect: 'none'
+        // });
+    }, [])
     return (
-        <div className="col-12 col-md-4 mb-3">
-            <div className="card">
-                <img className="card-img-top" src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg" alt=""></img>
+        <div className="col-12 col-md-3 mt-2 mb-2">
+            <div className="card fancybox">
+                <img className="card-img-top fancybox" src={path} alt=""></img>
             </div>
         </div>
     )

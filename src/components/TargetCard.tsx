@@ -1,5 +1,9 @@
+import axios from "axios";
 import "../components/TargetCard.css"
+import { useActions } from "../hooks/useActions";
+import { CreateTypes } from "./ReviewPage";
 import { TargetStatuses } from "./TargetPanel";
+
 
 export interface TargerCardProps {
     id: number;
@@ -7,10 +11,13 @@ export interface TargerCardProps {
     title: string;
     date: any;
     description: string;
-    status: number
+    status: number;
+    onClick?: any
 
 }
-function TargetCard({ id, key, title, date, description, status }: TargerCardProps) {
+function TargetCard({ id, key, title, date, description, status, onClick }: TargerCardProps) {
+    const { fetchActiveOperations } = useActions()
+
     let statusPic;
     if (status === TargetStatuses.Finded) {
         statusPic = <div className="target-status-circle green "></div>
@@ -20,25 +27,36 @@ function TargetCard({ id, key, title, date, description, status }: TargerCardPro
         statusPic = <div className="target-status-circle red"></div>
     }
 
-    function targetDeleteHandler(id: number, title: string) {
-        alert("target " + title + " deleted")
+    async function targetDeleteHandler(id: number, title: string) {
+        const isDelete = window.confirm("Подтвердите удаление цели " + title)
+        if (isDelete) {
+            const res = await axios.delete('https://localhost:44330/api/target/' + id);
+        }
+        setTimeout(fetchActiveOperations(), 100);
+
     }
+
 
     return (
         <div className="col">
-            <div className="card target-card mt-2 mb-1">
-                <div className="card-body text-dark">
+            <div className="card target-card mt-2 mb-1 d-flex"
+                style={{ background: "none" }}
+            >
+                <div className="card-body text-dark" >
                     <div className="d-flex w-100 justify-content-between">
                         <div className="d-flex align-items-center">
                             {statusPic}
-                            <h5 className="mb-1" style={{paddingRight:"10px"}}>{title}</h5>
-                            <i className="fa fa-trash-o mission-delete-button" style={{ fontSize: "16px" }} onClick={() => targetDeleteHandler(id,title)}></i>
+                            <h5 className="mb-1" style={{ paddingRight: "10px" }}>{title}</h5>
+                            <i className="fa fa-pencil mission-delete-button" style={{ fontSize: "16px" }} onClick={onClick}></i>
+                            <i className="fa fa-trash-o mission-delete-button" style={{ fontSize: "16px" }} onClick={() => targetDeleteHandler(id, title)}></i>
                         </div>
                         <small className="text-muted">{date}</small>
                     </div>
                     <p className="card-text">{description}</p>
                 </div>
+
             </div>
+
         </div>
     )
 }

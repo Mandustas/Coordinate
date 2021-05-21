@@ -8,15 +8,22 @@ import MissionCard from './MissionCard'
 import ModalMissionAdd from './ModalMissionAdd'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { useActions } from '../hooks/useActions'
+import { SidebarPages } from './OperationPageSidebar'
 
 function MissionsPage() {
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchOperations } = useActions()
+    const { changePage } = useActions()
 
     useEffect(() => {
         fetchOperations()
+        
     }, [])
-
+    useEffect(() => {
+        changePage(SidebarPages.Map)
+        
+    }, [])
+    
     let missionsActive = new Array();
 
 
@@ -53,7 +60,6 @@ function MissionsPage() {
                 <Map></Map>
             </div>
             <ModalMissionAdd></ModalMissionAdd>
-
         </div>
     )
 }

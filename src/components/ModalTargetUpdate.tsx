@@ -13,53 +13,60 @@ import {
 import DateFnsUtils from "@date-io/date-fns";
 import { useActions } from '../hooks/useActions'
 
-export interface ModalTargetAddProps {
+export interface ModalTargetUpdateProps {
+    TargetId?: number
+    TargetForChange: any
 }
 
-function ModalTargetAdd({ }: ModalTargetAddProps) {
+function ModalTargetUpdate({ TargetId, TargetForChange }: ModalTargetUpdateProps) {
     const validationSchema = yup.object().shape({
         title: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         description: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         targetTypeId: yup.number().required("Выберите значение типа"),
+        targetStatusId: yup.number().required("Выберите значение статуса"),
         lostTime: yup.date().required()
     })
+
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchActiveOperations } = useActions()
-
-    let initialValuesCreate = {
-        title: "",
-        description: "",
-        targetTypeId: 1,
-        operationId: 0,
-        lostTime: null
+    let initialValuesUpdate = {
+        title: TargetForChange.title,
+        description: TargetForChange.description,
+        targetTypeId: TargetForChange.targetTypeId,
+        targetStatusId: TargetForChange.targetStatusId,
+        operationId: TargetForChange.operationId,
+        lostTime: TargetForChange.lostTime,
     }
 
     useEffect(() => {
         fetchActiveOperations()
     }, [])
 
+    console.log(initialValuesUpdate);
+    console.log(TargetForChange);
+
 
     return (
         <>
-
-        
-            <Modal modelType={CreateTypes.ModalTargetCreate}>
+            <Modal modelType={CreateTypes.ModalTargetUpdate}>
                 <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">Добавить цель</h5>
+                    <h5 className="modal-title" id="exampleModalLongTitle">Обновить цель</h5>
                     <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
 
                 <Formik
+                    enableReinitialize
                     initialValues={
-                        initialValuesCreate
+                        initialValuesUpdate
                     }
                     validateOnBlur
-                    onSubmit={async (values, { resetForm }) => {
+                    onSubmit={ async (values) => {
                         if (activeOperation != null) {
                             values.operationId = activeOperation.id
                         }
+
                         let axiosConfig = {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
@@ -68,18 +75,16 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                         };
 
                         try {
-                            await axios.post(`https://localhost:44330/api/target`, values, axiosConfig)
+                            await axios.put(`https://localhost:44330/api/target/` + TargetId, values, axiosConfig)
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
-                            resetForm({})
-
                         } catch (error) {
                             console.log(error);
                         }
+
                         setTimeout(fetchActiveOperations(), 100);
 
-
-                        $("#" + CreateTypes.ModalTargetCreate).modal('hide')
+                        $("#" + CreateTypes.ModalTargetUpdate).modal('hide')
 
 
                     }}
@@ -135,6 +140,22 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                                         {touched.targetTypeId && errors.targetTypeId && <p className="form-error-msg">{errors.targetTypeId}</p>}
                                     </div>
 
+                                    <div className="form-group">
+                                        <label>Статус цели:</label>
+                                        <Field
+                                            as="select"
+                                            name="targetStatusId"
+                                            className="form-control"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.targetStatusId}>
+                                            <option value="1">Найден</option>
+                                            <option value="2">Требует проверки!</option>
+                                            <option value="3">Не найден</option>
+                                        </Field>
+                                        {touched.targetStatusId && errors.targetStatusId && <p className="form-error-msg">{errors.targetTypeId}</p>}
+                                    </div>
+
                                     <div className="form-group mt-3 d-flex ">
                                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                             <KeyboardDatePicker
@@ -168,10 +189,6 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                                         </MuiPickersUtilsProvider>
                                     </div>
 
-                                    {/* <div className="form-group mt-3">
-                                        
-                                    </div> */}
-
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
@@ -181,7 +198,7 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                                         data-dismiss="modal"
                                         disabled={!isValid && !dirty}
                                     >
-                                        Создать
+                                        Обновить
                                     </button>
                                 </div>
                             </Form>
@@ -193,4 +210,4 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
     )
 }
 
-export default ModalTargetAdd
+export default ModalTargetUpdate

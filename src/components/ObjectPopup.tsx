@@ -20,19 +20,23 @@ function ObjectPopup({ id, name, description, img, x, y }: ObjectPopupProps) {
         <>
             <div><span className="object-popup-text-bold">Название: </span> {name}</div>
             <div><span className="object-popup-text-bold">Описание:</span>  {description}</div>
-            <div onClick={() => handleClick}>
-                <span className="object-popup-text-bold">Изображение</span>:
-                <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}>
+            {
+                img != null
+                    ?
+                    <div onClick={() => handleClick}>
+                        <span className="object-popup-text-bold">Изображение</span>:
+                        <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}></img>
+                    </div>
+                    : null
+            }
 
-                </img>
-            </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div><span className="object-popup-text-bold">X:</span> {x}</div>
                 <div><span className="object-popup-text-bold">Y:</span> {y}</div>
             </div>
             <div className="object-popup-add-mission">
                 <a href="">Назначить миссию</a>
-                
+
             </div>
         </>
     )

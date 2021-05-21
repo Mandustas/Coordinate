@@ -19,8 +19,8 @@ function MissionObjectItem({id,key,title,x,y}:MissionObjectItemProps) {
     }
     return (
         <>
-            <div onClick={() => flyToLatLng(x, y)} className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
-                <div className="object-name" >
+            <div  className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+                <div className="object-name" onClick={() => flyToLatLng(x, y)}>
                     {title}
                 </div>
                 <div className="delete-object-button" onClick={() => deleteMissionObject(id)}>

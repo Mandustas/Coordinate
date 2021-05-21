@@ -13,39 +13,42 @@ import {
 import DateFnsUtils from "@date-io/date-fns";
 import { useActions } from '../hooks/useActions'
 
-export interface ModalTargetAddProps {
+export interface ModalTargetProps {
+    initialValues: any
+    children: any
+    title: string
+    onSubmit: any
 }
 
-function ModalTargetAdd({ }: ModalTargetAddProps) {
+function ModalTargetAdd({ initialValues, children, title, onSubmit }: ModalTargetProps) {
     const validationSchema = yup.object().shape({
         title: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         description: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         targetTypeId: yup.number().required("Выберите значение типа"),
+        targetStatusId: yup.number().required("Выберите значение статуса"),
         lostTime: yup.date().required()
     })
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchActiveOperations } = useActions()
 
-    let initialValuesCreate = {
-        title: "",
-        description: "",
-        targetTypeId: 1,
-        operationId: 0,
-        lostTime: null
-    }
+    let targetForChange: any;
+
+
 
     useEffect(() => {
         fetchActiveOperations()
     }, [])
 
+    useEffect(() => {
+
+    }, [])
+
 
     return (
         <>
-
-        
             <Modal modelType={CreateTypes.ModalTargetCreate}>
                 <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">Добавить цель</h5>
+                    <h5 className="modal-title" id="exampleModalLongTitle">{title}</h5>
                     <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
@@ -53,36 +56,12 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
 
                 <Formik
                     initialValues={
-                        initialValuesCreate
+                        initialValues
                     }
                     validateOnBlur
-                    onSubmit={async (values, { resetForm }) => {
-                        if (activeOperation != null) {
-                            values.operationId = activeOperation.id
-                        }
-                        let axiosConfig = {
-                            headers: {
-                                'Content-Type': 'application/json;charset=UTF-8',
-                                "Access-Control-Allow-Origin": "*",
-                            }
-                        };
-
-                        try {
-                            await axios.post(`https://localhost:44330/api/target`, values, axiosConfig)
-                                .then(res => console.log(res))
-                                .catch(err => console.log('Login: ', err));
-                            resetForm({})
-
-                        } catch (error) {
-                            console.log(error);
-                        }
-                        setTimeout(fetchActiveOperations(), 100);
-
-
-                        $("#" + CreateTypes.ModalTargetCreate).modal('hide')
-
-
-                    }}
+                    onSubmit={
+                        onSubmit //TODO: передать обработчик
+                    }
                     validationSchema={validationSchema}
                 >
                     {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, setFieldValue }) => (
@@ -134,7 +113,7 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                                         </Field>
                                         {touched.targetTypeId && errors.targetTypeId && <p className="form-error-msg">{errors.targetTypeId}</p>}
                                     </div>
-
+                                    {children}
                                     <div className="form-group mt-3 d-flex ">
                                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                             <KeyboardDatePicker
@@ -181,7 +160,7 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                                         data-dismiss="modal"
                                         disabled={!isValid && !dirty}
                                     >
-                                        Создать
+                                        Отправить
                                     </button>
                                 </div>
                             </Form>

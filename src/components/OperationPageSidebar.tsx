@@ -1,8 +1,24 @@
 import React, { useEffect } from 'react'
 import "../components/OperationPageSidebar.css"
 import $ from "jquery"
+import { useTypedSelector } from '../hooks/useTypedSelector'
+
+export enum SidebarPages {
+    Review = 1,
+    Map = 2,
+    Images = 3
+}
 
 function OperationPageSidebar() {
+
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
+    const { page } = useTypedSelector(state => state.pages)
+
+    useEffect(() => {
+
+
+    }, [])
+
     useEffect(() => {
         $('#dismiss, .overlay').on('click', function () {
             // hide sidebar
@@ -31,27 +47,18 @@ function OperationPageSidebar() {
                 </div>
 
                 <div className="sidebar-header">
-                    <h3>Поиск кота</h3>
+                    <h3>{activeOperation != null ? activeOperation.title : ""}</h3>
                 </div>
 
                 <ul className="list-unstyled components">
                     <p className="sidebar-second-header">Навигация</p>
-                    <li className="active">
-
+                    <li className={ `${ page == SidebarPages.Review ? "active" : ""}`}>
                         <a href="/operation/review" ><i className="fa fa-search sidebar-item-icon"></i> Обзор</a>
                     </li>
-                    <li>
+                    <li className={ `${ page == SidebarPages.Map ? "active" : ""}`}>
                         <a href="/operation/missions"><i className="fa fa-map-marker sidebar-item-icon"></i> Миссии</a>
                     </li>
-                    {/* <li>
-                        <a href="/operation/members"><i className="fa fa-users sidebar-item-icon"></i> Участники</a>
-                    </li> */}
-                    {/* <li>
-                        <a href="/operation/targets"><i className="fa fa-bullseye sidebar-item-icon"></i> Цели</a>
-                    </li> */}
-                    <li>
-                    </li>
-                    <li>
+                    <li className={ `${ page == SidebarPages.Images ? "active" : ""}`}>
                         <a href="/operation/images"><i className="fa fa-image sidebar-item-icon"></i> Изображения</a>
                     </li>
 

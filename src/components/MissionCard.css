@@ -1,5 +1,4 @@
 .mission-card {
-    cursor: pointer;
     -webkit-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
     -moz-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
     box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
@@ -13,10 +12,13 @@
     display: block;
     font-size: small;
 }
-.mission-object-item:hover {
+.mission-object-item {
+    
+}
+.object-name:hover{
+    cursor: pointer;
     font-weight: bolder;
 }
-
 .delete-object-button-active{
     display: block;
 }
@@ -26,13 +28,15 @@
 
 .fa-times-thin:hover{
     font-weight: bold;
+    cursor: pointer;
     
 }
 
-.delete-mission:hover{
-    font-weight: 500;
-    /* border-bottom: 1px solid lightgray ; */
+.mission-delete-button{
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .mission-delete-button:hover{
     font-weight: bold;
+    cursor: pointer;
 }

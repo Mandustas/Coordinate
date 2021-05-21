@@ -1,50 +1,42 @@
 import React, { useEffect } from 'react'
-import ImageItem from './ImageItem'
+import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import CycleItem from './CycleItem';
 import OperationPageHeader from './OperationPageHeader'
+import { SidebarPages } from './OperationPageSidebar';
 
 function ImagesPage() {
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
+    const { cycles } = useTypedSelector(state => state.cycles)
+    const { fetchCycles } = useActions()
+
+    const { changePage } = useActions()
+
     useEffect(() => {
-        function handleResize() {
-            const headerHeight = $("#AppHeader").outerHeight() as any;
-            const height = $(window).height() as any;
-            $('.images-panel').css("height", height - headerHeight);
+        changePage(SidebarPages.Images)
+        
+    }, [])
 
+    useEffect(() => {
+        if (activeOperation != null) {
+            fetchCycles(activeOperation.id)
         }
+    }, [activeOperation]);
 
-        window.addEventListener("resize", handleResize);
-        handleResize();
-        return () => {
-            window.removeEventListener("resize", handleResize)
-
-        };
-    }, []);
 
     return (
         <div className="row">
-            <div className="col-md-4 col-12 control-panel">
+            <div className="col-12">
                 <OperationPageHeader title="Изображения" isBurger={true}></OperationPageHeader>
+                <div className="accordion" id="accordionPanelsStayOpenExample">
+                    <div className="accordion-item">
+                        {cycles.map(cycle => {
+                            return (<CycleItem key={cycle.id} title={cycle.title} id={cycle.id} endDate={cycle.endDate} startDate={cycle.startDate} images={cycle.images}></CycleItem>)
+                        })}
+                    </div>
 
-            </div>
-            <div className="col-md-8 col-12 images-panel">
-                <div className="row">
-
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
-                    <ImageItem></ImageItem>
                 </div>
             </div>
-
         </div>
 
 
