@@ -33,7 +33,7 @@ function ModalObjectAdd({ x, y }: ModalObjectAddState) {
 
     useEffect(() => {
         fetchActiveOperations()
-    }, [])
+    }, [x,y])
 
 
     return (
@@ -124,7 +124,7 @@ function ModalObjectAdd({ x, y }: ModalObjectAddState) {
                                                 <label htmlFor="" style={{ margin: "10px" }}>N: </label>
                                                 <input
                                                     type={`x`}
-                                                    disabled
+                                                    // disabled
                                                     className="form-control"
                                                     style={{ marginBottom: "10px" }}
                                                     name={`x`}
@@ -138,7 +138,7 @@ function ModalObjectAdd({ x, y }: ModalObjectAddState) {
                                                 <label htmlFor="" style={{ margin: "10px" }}>W: </label>
                                                 <input
                                                     type={`y`}
-                                                    disabled
+                                                    // disabled
                                                     className="form-control"
                                                     style={{ marginBottom: "10px" }}
                                                     name={`y`}

@@ -12,8 +12,6 @@ export interface ObjectPopupProps {
 function ObjectPopup({ id, name, description, img, x, y }: ObjectPopupProps) {
     function handleClick() {
         alert("qwe")
-        console.log("qwe");
-
     }
 
     return (
