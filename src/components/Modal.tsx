@@ -15,7 +15,6 @@ function Modal({ children, modelType }: ModalProps) {
                 </div>
             </div>
         </div>
-
     )
 }
 

@@ -18,3 +18,24 @@
     display: flex;
     align-items: center;
 }
+.operation-card-header-title{
+    display: flex;
+    align-items: center;
+}
+.complete-operation-button{
+    color: darkgrey;
+    text-align: center;
+    font-size: 23px;
+    padding: 5px;
+    margin: 5px 10px;
+    /* border: solid 1px darkgrey;
+    border-radius: 5px; */
+}
+.operation-card-title:hover{
+    text-decoration: underline;
+}
+.complete-operation-button:hover{
+
+    color: black;
+    font-weight: bold;
+}

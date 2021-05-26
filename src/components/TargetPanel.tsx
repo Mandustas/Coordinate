@@ -14,9 +14,8 @@ export enum TargetStatuses {
 
 
 function TargetPanel() {
-
-
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
+
     useEffect(() => {
         $("#TargetPanel").draggable({ scroll: false });
 
@@ -34,6 +33,9 @@ function TargetPanel() {
 
                 })
             }
+
+
+
         </div>
     )
 }

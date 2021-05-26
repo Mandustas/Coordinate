@@ -1,4 +1,7 @@
 import React from 'react'
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
+
 
 export interface ObjectPopupProps {
     id?: number
@@ -23,7 +26,16 @@ function ObjectPopup({ id, name, description, img, x, y }: ObjectPopupProps) {
                     ?
                     <div onClick={() => handleClick}>
                         <span className="object-popup-text-bold">Изображение</span>:
-                        <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}></img>
+                        {/* <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}></img>
+                        <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}></img> */}
+                        <ImageGallery
+                            showPlayButton={false}
+                            showNav={false}
+                            showBullets={false}
+                            showIndex={false}
+                            showThumbnails={false}
+                            items={[{ original: img }]}
+                        />
                     </div>
                     : null
             }
@@ -31,10 +43,6 @@ function ObjectPopup({ id, name, description, img, x, y }: ObjectPopupProps) {
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div><span className="object-popup-text-bold">X:</span> {x}</div>
                 <div><span className="object-popup-text-bold">Y:</span> {y}</div>
-            </div>
-            <div className="object-popup-add-mission">
-                <a href="">Назначить миссию</a>
-
             </div>
         </>
     )

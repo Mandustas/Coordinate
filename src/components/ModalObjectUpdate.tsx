@@ -6,31 +6,45 @@ import * as yup from 'yup'
 import axios from 'axios'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
+import Select from 'react-select'
 
-
-
-export interface ModalObjectAddState {
+export interface ModalObjectAddUpdate {
 
 }
 
-function ModalObjectAdd({ }: ModalObjectAddState) {
-    const { x, y } = useTypedSelector(state => state.objectCreate)
+function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
+    const { detectedObject } = useTypedSelector(state => state.objectUpdate)
+    const { fetchActiveOperations } = useActions()
+    const { fetchDetectedObjects } = useActions()
+    console.log("DEBUG");
+    console.log(detectedObject);
+    console.log(detectedObject != null);
+    let initialValues;
+    initialValues = {
+        title: detectedObject != null ? detectedObject.title : "",
+        description: detectedObject != null ? detectedObject.description : "",
+        mission: { value: detectedObject.missionId, label: detectedObject.missionId!=null? "Миссия назначена" : "Миссия не назначена" },
+    }
+
     const validationSchema = yup.object().shape({
         title: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         description: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
+
     })
 
-    const { activeOperation } = useTypedSelector(state => state.activeOperation)
-    const { fetchActiveOperations } = useActions()
-    const { fetchDetectedObjects } = useActions()
-
-    let initialValuesCreate = {
-        title: "",
-        description: "",
-        operationId: 0,
-        x: x.toString(),
-        y: y.toString()
+    let missionsToSelect: Array<{ value: number, label: string }> = []
+    missionsToSelect.push({ label: "Нет миссии", value: 9999999999 })
+    if (activeOperation != null) {
+        activeOperation.users.forEach((user: any) => {
+            user.missions.forEach((mission: any) => {
+                missionsToSelect.push({ label: "#" + mission.id + " " + user.firstName + " " + user.secondName, value: mission.id })
+            });
+        });
     }
+
+    console.log("DEBUG: initialValues");
+    console.log(initialValues);
 
     useEffect(() => {
         fetchActiveOperations()
@@ -39,9 +53,9 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
 
     return (
         <>
-            <Modal modelType={CreateTypes.ModalObjectAdd}>
+            <Modal modelType={CreateTypes.ModalObjectUpdate}>
                 <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">Добавить объект на карту</h5>
+                    <h5 className="modal-title" id="exampleModalLongTitle">Редактировать объект</h5>
                     <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
@@ -49,26 +63,29 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
 
 
                 <Formik
+                    enableReinitialize
                     initialValues={
-                        initialValuesCreate
+                        initialValues
                     }
 
                     validateOnBlur
                     onSubmit={async (values, { resetForm }) => {
-                        if (activeOperation != null) {
-                            values.operationId = activeOperation.id
-                        }
+
                         let axiosConfig = {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
                                 "Access-Control-Allow-Origin": "*",
                             }
                         };
-                        values.x = x.toString()
-                        values.y = y.toString()
-                        console.log(values)
+
+
+                        let valuesValid = {
+                            title: values.title,
+                            description: values.description,
+                            missionId: values.mission.value==9999999999 ? null : values.mission.value,
+                        }
                         try {
-                            await axios.post(`https://localhost:44330/api/DetectedObject`, values, axiosConfig)
+                            await axios.put(`https://localhost:44330/api/DetectedObject/` + detectedObject.id, valuesValid, axiosConfig)
 
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
@@ -81,7 +98,7 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
                         setTimeout(fetchActiveOperations(), 100);
 
 
-                        $("#" + CreateTypes.ModalObjectAdd).modal('hide')
+                        $("#" + CreateTypes.ModalObjectUpdate).modal('hide')
 
 
                     }}
@@ -90,7 +107,7 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
                     {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, setFieldValue }) => (
                         <div className="">
                             <Form>
-                                <div className="modal-body">
+                                <div className="modal-body" style={{ height: "400px" }}>
                                     <div className="form-group">
                                         <input
                                             type={`text`}
@@ -122,39 +139,23 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
                                         {touched.description && errors.description && <p className="form-error-msg">{errors.description}</p>}
                                     </div>
 
-                                    {/* <div className="form-group">
-                                        <label>Координаты:</label>
-                                        <div className="d-flex">
-                                            <div className="col d-flex align-items-center">
-                                                <label htmlFor="" style={{ margin: "10px" }}>N: </label>
-                                                <input
-                                                    type={`x`}
-                                                    // disabled
-                                                    className="form-control"
-                                                    style={{ marginBottom: "10px" }}
-                                                    name={`x`}
-                                                    onChange={handleChange}
-                                                    onBlur={handleBlur}
-                                                    value={values.x}
-                                                >
-                                                </input>
-                                            </div>
-                                            <div className="col d-flex align-items-center">
-                                                <label htmlFor="" style={{ margin: "10px" }}>W: </label>
-                                                <input
-                                                    type={`y`}
-                                                    // disabled
-                                                    className="form-control"
-                                                    style={{ marginBottom: "10px" }}
-                                                    name={`y`}
-                                                    onChange={handleChange}
-                                                    onBlur={handleBlur}
-                                                    value={values.y}
-                                                >
-                                                </input>
-                                            </div>
-                                        </div>
-                                    </div> */}
+                                    <div className="form-group">
+                                        <label>Миссия:</label>
+                                        <Select
+                                            className="basic-single"
+                                            classNamePrefix="select"
+                                            // defaultValue={missionsToSelect != null ? missionsToSelect[0] : null}
+                                            isClearable={true}
+                                            isRtl={false}
+                                            isSearchable={true}
+                                            name="mission"
+                                            options={missionsToSelect}
+                                            onChange={option => setFieldValue("mission", option)}
+                                            onBlur={handleBlur}
+                                            value={values.mission}
+                                            maxMenuHeight={200}
+                                        />
+                                    </div>
 
                                 </div>
                                 <div className="modal-footer">
@@ -177,4 +178,4 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
     )
 }
 
-export default ModalObjectAdd
+export default ModalObjectUpdate

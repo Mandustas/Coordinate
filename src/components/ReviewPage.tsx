@@ -11,6 +11,7 @@ export enum CreateTypes {
     ModalTargetUpdate = "modal-target-update",
     ModalMemberAdd = "modal-member-add",
     ModalObjectAdd = "modal-object-add",
+    ModalObjectUpdate = "modal-object-update",
     ModalMissionAdd = "modal-mission-add",
     PageOperationAdd = "page-operation-add",
     ModalOperationAdd = "modal-operation-add",

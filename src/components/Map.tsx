@@ -10,6 +10,7 @@ import ReactDOMServer from 'react-dom/server'
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useActions } from "../hooks/useActions";
 import { MapContainer } from "react-leaflet";
+import ModalObjectUpdate from "./ModalObjectUpdate";
 
 
 
@@ -27,18 +28,18 @@ var InactiveIcon = L.icon({
 })
 
 function DoubleClickObjectModal() {
-    const [XY, setXY] = useState(["53.08861485884185", "33.38702505613743"]);
+    const { setObjectCreate } = useActions()
 
     const map = useMapEvents({
         dblclick(e: any) {
-            setXY([e.latlng.lat.toString(), e.latlng.lng.toString()])
-            console.log(XY);
+            setObjectCreate(e.latlng.lat , e.latlng.lng)
+            
             $("#" + CreateTypes.ModalObjectAdd).modal('show')
         },
     })
 
     return (
-        <ModalObjectAdd x={XY[0]} y={XY[1]} />
+        <ModalObjectAdd />
     )
 }
 
@@ -46,7 +47,7 @@ function DoubleClickObjectModal() {
 
 function Map() {
     const { error, loading, detectedObjects } = useTypedSelector(state => state.detectedObjects)
-    const { fetchDetectedObjects } = useActions()
+    const { fetchDetectedObjects, fetchObjectUpdate } = useActions()
 
     useEffect(() => {
         fetchDetectedObjects()
@@ -77,6 +78,8 @@ function Map() {
                                     eventHandlers={
                                         {
                                             contextmenu: () => {
+                                                fetchObjectUpdate(detectedObject.id)
+                                                $("#" + CreateTypes.ModalObjectUpdate).modal('show')
 
                                             },
                                         }

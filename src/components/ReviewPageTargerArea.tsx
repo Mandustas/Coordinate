@@ -1,19 +1,17 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import ModalTargetAdd from './ModalTargetAdd'
-import ModalTargetUpdate from './ModalTargetUpdate'
 import OperationPageHeader from './OperationPageHeader'
 import { CreateTypes } from './ReviewPage'
 import TargetCard from './TargetCard'
 
 
 function ReviewPageTargerArea() {
-    const [targetIdToChange, setTargetIdToChange] = useState(0)
-    const [targetToChange, setTargetToChange] = useState(0)
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchOperations } = useActions()
+    const { fetchTargetUpdate } = useActions()
     
     useEffect(() => {
         fetchOperations()
@@ -21,14 +19,7 @@ function ReviewPageTargerArea() {
 
 
     let UpdateTargetHandler = async (targetId: number) => {
-        try {
-            setTargetIdToChange(targetId)
-            const responseTarget = await axios.get("https://localhost:44330/api/target/" + targetId)
-            setTargetToChange(responseTarget.data);
-           
-        } catch (error) {
-            console.log("DEBUG: ошибка при  загрузке цели для изменения")
-        }
+        fetchTargetUpdate(targetId)
         $("#" + CreateTypes.ModalTargetUpdate).modal('show')
     }
 
@@ -46,7 +37,6 @@ function ReviewPageTargerArea() {
             }
 
             <ModalTargetAdd></ModalTargetAdd>
-            <ModalTargetUpdate TargetId={targetIdToChange} TargetForChange={targetToChange}></ModalTargetUpdate>
         </>
     )
 }

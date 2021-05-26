@@ -1,17 +1,26 @@
 import React from 'react'
 import "../components/TargetCard.css"
+import { useActions } from '../hooks/useActions';
+import { CreateTypes } from './ReviewPage';
 import { TargetStatuses } from './TargetPanel';
 
 
 export interface TargetPanelItemProps {
-    id:number
+    id: number
     key: number
     status: number;
-    title:string;
+    title: string;
 
 }
 
-function TargetPanelItem({ status,id,key,title }: TargetPanelItemProps) {
+function TargetPanelItem({ status, id, key, title }: TargetPanelItemProps) {
+    const { fetchTargetUpdate } = useActions()
+
+    let UpdateTargetHandler = async (targetId: number) => {
+        fetchTargetUpdate(targetId)
+        $("#" + CreateTypes.ModalTargetUpdate).modal('show')
+    }
+
     let statusPic;
     if (status === TargetStatuses.Finded) {
         statusPic = <div className="target-status-circle green "></div>
@@ -23,13 +32,10 @@ function TargetPanelItem({ status,id,key,title }: TargetPanelItemProps) {
 
     return (
         <div className={`targetPanelItem  `}>
-            <div style={{display:'flex'}}>
+            <div style={{ display: 'flex' }}>
                 {statusPic}
-                <div className={`target-name ${status === TargetStatuses.Attention ? "shake-horizontal" : null}`}>{title}</div>
+                <div className={`target-name ${status === TargetStatuses.Attention ? "shake-horizontal" : null}`} onClick={() => UpdateTargetHandler(id)}>{title}</div>
             </div>
-
-            {status === TargetStatuses.Attention ? <div className=" fa fa-check confirm"></div> : null}
-
         </div>
     )
 }

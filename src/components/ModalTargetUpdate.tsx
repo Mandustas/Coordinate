@@ -14,11 +14,14 @@ import DateFnsUtils from "@date-io/date-fns";
 import { useActions } from '../hooks/useActions'
 
 export interface ModalTargetUpdateProps {
-    TargetId?: number
-    TargetForChange: any
+
 }
 
-function ModalTargetUpdate({ TargetId, TargetForChange }: ModalTargetUpdateProps) {
+function ModalTargetUpdate({ }: ModalTargetUpdateProps) {
+    const { target } = useTypedSelector(state => state.targetUpdate)
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
+    const { fetchActiveOperations } = useActions()
+
     const validationSchema = yup.object().shape({
         title: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
         description: yup.string().typeError("Должно быть строкой").required('Обязательное поле'),
@@ -26,24 +29,20 @@ function ModalTargetUpdate({ TargetId, TargetForChange }: ModalTargetUpdateProps
         targetStatusId: yup.number().required("Выберите значение статуса"),
         lostTime: yup.date().required()
     })
-
-    const { activeOperation } = useTypedSelector(state => state.activeOperation)
-    const { fetchActiveOperations } = useActions()
-    let initialValuesUpdate = {
-        title: TargetForChange.title,
-        description: TargetForChange.description,
-        targetTypeId: TargetForChange.targetTypeId,
-        targetStatusId: TargetForChange.targetStatusId,
-        operationId: TargetForChange.operationId,
-        lostTime: TargetForChange.lostTime,
+    let initialValuesUpdate
+    initialValuesUpdate = {
+        title: target != null ? target.title : "",
+        description: target != null ? target.description : "",
+        targetTypeId: target != null ? target.targetTypeId : 0,
+        targetStatusId: target != null ? target.targetStatusId : 0,
+        operationId: target != null ? target.operationId : 0,
+        lostTime: target != null ? target.lostTime : "",
     }
+
 
     useEffect(() => {
         fetchActiveOperations()
     }, [])
-
-    console.log(initialValuesUpdate);
-    console.log(TargetForChange);
 
 
     return (
@@ -62,7 +61,7 @@ function ModalTargetUpdate({ TargetId, TargetForChange }: ModalTargetUpdateProps
                         initialValuesUpdate
                     }
                     validateOnBlur
-                    onSubmit={ async (values) => {
+                    onSubmit={async (values) => {
                         if (activeOperation != null) {
                             values.operationId = activeOperation.id
                         }
@@ -75,7 +74,7 @@ function ModalTargetUpdate({ TargetId, TargetForChange }: ModalTargetUpdateProps
                         };
 
                         try {
-                            await axios.put(`https://localhost:44330/api/target/` + TargetId, values, axiosConfig)
+                            await axios.put(`https://localhost:44330/api/target/` + target.id, values, axiosConfig)
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
                         } catch (error) {
