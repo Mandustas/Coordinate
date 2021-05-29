@@ -9,22 +9,36 @@ export interface MissionObjectItemProps {
     title: string;
     x: string;
     y: string;
+    isDesired: boolean;
 }
 
-function MissionObjectItem({ id, key, title, x, y }: MissionObjectItemProps) {
-    const { fetchObjectUpdate } = useActions()
+function MissionObjectItem({ id, key, title, x, y, isDesired }: MissionObjectItemProps) {
+    const { fetchObjectUpdate, mapCenter } = useActions()
 
     function deleteMissionObject(id: number) {
         alert("object " + id + " deleted from mission")
     }
     return (
         <>
-            <div className="mission-object-item col-12 col-xl-6 d-flex justify-content-between">
+            <div className="mission-object-item col-12 col-xl-6 d-flex align-items-center">
+                <div
+                    className="mission-object-item-icon"
+                    style={{ backgroundColor: isDesired? "gray" : "red" }}
+                >
+
+                </div>
                 <div className="object-name"
                     onClick={() => {
                         fetchObjectUpdate(id)
                         $("#" + CreateTypes.ModalObjectUpdate).modal('show')
-                    }}>
+                        mapCenter(parseFloat(x), parseFloat(y))
+                    }}
+                    onMouseEnter={() => {
+                        console.log("HOVER")
+                        mapCenter(parseFloat(x), parseFloat(y))
+                    }
+                    }
+                >
                     {title}
                 </div>
                 {/* <div className="delete-object-button" onClick={() => deleteMissionObject(id)}>

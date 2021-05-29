@@ -77,7 +77,7 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
                         } catch (error) {
                             console.log(error);
                         }
-                        setTimeout(fetchDetectedObjects(), 100);
+                        setTimeout(fetchDetectedObjects(activeOperation.id), 100);
                         setTimeout(fetchActiveOperations(), 100);
 
 

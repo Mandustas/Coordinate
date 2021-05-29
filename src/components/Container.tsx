@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "../components/Container.scss"
+import ModalObjectAdd from './ModalObjectAdd';
 import ModalObjectUpdate from './ModalObjectUpdate';
 import ModalTargetUpdate from './ModalTargetUpdate';
 
@@ -18,6 +19,7 @@ function Container({ children }: ContainerProps) {
     return (
         <div className="container-fluid bg-light" id="AppContainer" >
             {children}
+            <ModalObjectAdd />
             <ModalObjectUpdate></ModalObjectUpdate>
             <ModalTargetUpdate></ModalTargetUpdate>
         </div>

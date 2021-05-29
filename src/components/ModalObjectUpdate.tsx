@@ -17,14 +17,12 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
     const { detectedObject } = useTypedSelector(state => state.objectUpdate)
     const { fetchActiveOperations } = useActions()
     const { fetchDetectedObjects } = useActions()
-    console.log("DEBUG");
-    console.log(detectedObject);
-    console.log(detectedObject != null);
     let initialValues;
     initialValues = {
         title: detectedObject != null ? detectedObject.title : "",
         description: detectedObject != null ? detectedObject.description : "",
-        mission: { value: detectedObject.missionId, label: detectedObject.missionId!=null? "Миссия назначена" : "Миссия не назначена" },
+        mission: { value: detectedObject.missionId, label: detectedObject.missionId != null ? "Миссия назначена" : "Миссия не назначена" },
+        isDesired: detectedObject != null ? detectedObject.isDesired : false,
     }
 
     const validationSchema = yup.object().shape({
@@ -35,6 +33,7 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
 
     let missionsToSelect: Array<{ value: number, label: string }> = []
     missionsToSelect.push({ label: "Нет миссии", value: 9999999999 })
+
     if (activeOperation != null) {
         activeOperation.users.forEach((user: any) => {
             user.missions.forEach((mission: any) => {
@@ -42,9 +41,6 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
             });
         });
     }
-
-    console.log("DEBUG: initialValues");
-    console.log(initialValues);
 
     useEffect(() => {
         fetchActiveOperations()
@@ -82,7 +78,8 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
                         let valuesValid = {
                             title: values.title,
                             description: values.description,
-                            missionId: values.mission.value==9999999999 ? null : values.mission.value,
+                            missionId: values.mission.value == 9999999999 ? null : values.mission.value,
+                            isDesired: values.isDesired
                         }
                         try {
                             await axios.put(`https://localhost:44330/api/DetectedObject/` + detectedObject.id, valuesValid, axiosConfig)
@@ -94,14 +91,11 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
                         } catch (error) {
                             console.log(error);
                         }
-                        setTimeout(fetchDetectedObjects(), 100);
+                        setTimeout(fetchDetectedObjects(activeOperation.id), 100);
                         setTimeout(fetchActiveOperations(), 100);
-
-
                         $("#" + CreateTypes.ModalObjectUpdate).modal('hide')
-
-
                     }}
+
                     validationSchema={validationSchema}
                 >
                     {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, setFieldValue }) => (
@@ -155,6 +149,20 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
                                             value={values.mission}
                                             maxMenuHeight={200}
                                         />
+                                    </div>
+
+                                    <div className="form-check form-switch detected-object-is-desired">
+                                        <Field
+                                            type={"checkbox"}
+                                            name={"isDesired"}
+                                            className={"form-check-input"}
+                                            id={"DetectedObjectIsDesired"}
+                                        >
+
+                                        </Field>
+                                        <label className="form-check-label" htmlFor="DetectedObjectIsDesired">
+                                            Проверен
+                                         </label>
                                     </div>
 
                                 </div>

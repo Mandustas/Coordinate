@@ -10,3 +10,16 @@
     color: lightcoral;
     font-size: small;
 }
+.detected-object-is-desired{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    cursor: pointer;
+}
+#DetectedObjectIsDesired{
+    height: 25px;
+    width: 50px;
+    margin-right: 15px;
+    cursor: pointer;
+
+}

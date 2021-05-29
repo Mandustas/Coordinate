@@ -12,9 +12,10 @@ import ReviewPage from './components/ReviewPage';
 import TargetPanel from './components/TargetPanel';
 import { useActions } from './hooks/useActions';
 import { useTypedSelector } from './hooks/useTypedSelector';
+import Home from './components/Home';
 
 function App() {
-  const {  activeOperation } = useTypedSelector(state => state.activeOperation)
+  const { activeOperation } = useTypedSelector(state => state.activeOperation)
   const { fetchActiveOperations } = useActions()
   useEffect(() => {
     fetchActiveOperations()
@@ -39,7 +40,9 @@ function App() {
               ? MissionsPage
               : Operations}>
             </Route>
+            
             <Route path='/operations' component={Operations}></Route>
+            <Route path='/home' component={Home}></Route>
             <Route path='/operation/review' component={ReviewPage}></Route>
             <Route path='/operation/images' component={ImagesPage}></Route>
             <Route path='/operation/missions' component={MissionsPage}></Route>

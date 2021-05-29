@@ -1,5 +1,5 @@
 export interface DetectedObjectState {
-    detectedObject: {id: number, title: string, description: string, missionId: number};
+    detectedObject: { id: number, title: string, description: string, missionId: number, isDesired: boolean };
 }
 
 export enum DetectedObjectActionTypes {

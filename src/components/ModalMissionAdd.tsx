@@ -20,8 +20,6 @@ function ModalMissionAdd() {
 
     if (activeOperation != null) {
         activeOperationUsers = activeOperation.users
-
-        console.log(activeOperationUsers);
         activeOperationUsers.forEach((user: { id: number, firstName: string, secondName: string }) => {
             usersToSelect.push({ label: user.firstName + " " + user.secondName, value: user.id })
         });
@@ -72,8 +70,6 @@ function ModalMissionAdd() {
                     }
                     validateOnBlur
                     onSubmit={async (values, { resetForm }) => {
-                        alert("DEBUG")
-                        console.log(values)
                         let axiosConfig = {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',

@@ -7,6 +7,7 @@ import { pagesReducer } from "./pagesReducer";
 import { targetUpdateReducer } from "./targetUpdate";
 import { objectCreateReducer } from "./objectCreate";
 import { objectUpdateReducer } from "./detectedObjectUpdate";
+import { mapCenterReducer } from "./mapCenterReducer";
 
 export const rootReducer = combineReducers(
     {
@@ -18,6 +19,7 @@ export const rootReducer = combineReducers(
         targetUpdate: targetUpdateReducer,
         objectCreate: objectCreateReducer,
         objectUpdate: objectUpdateReducer,
+        mapCenter: mapCenterReducer,
     }
 )
 

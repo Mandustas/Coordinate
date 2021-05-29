@@ -1,7 +1,7 @@
 import { DetectedObjectAction, DetectedObjectActionTypes, DetectedObjectState } from "../../types/detectedObjectUpdate";
 
 const initialState: DetectedObjectState = {
-    detectedObject: { id: 0, description: "", missionId: 0, title: "" }
+    detectedObject: { id: 0, description: "", missionId: 0, title: "", isDesired: false }
 }
 
 export const objectUpdateReducer = (state: DetectedObjectState = initialState, action: DetectedObjectAction): DetectedObjectState => {

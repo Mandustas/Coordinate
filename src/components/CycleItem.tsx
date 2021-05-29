@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import ImageItem from './ImageItem'
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import { string } from 'yup/lib/locale';
 
 export interface CycleItemProps {
     key: number;
@@ -11,12 +12,27 @@ export interface CycleItemProps {
     startDate: string;
     endDate: string;
 }
-let galleryImages: Array<{ original: string, thumbnail:string }> = []
+let galleryImages: Array<{ original: string, thumbnail: string }> = []
 function CycleItem({ key, id, endDate, images, startDate, title }: CycleItemProps) {
-    
-    images.forEach(img => {
-        galleryImages.push({ original: img.path, thumbnail: img.path })
-    });
+    const [imagesGallery, setImages] = React.useState([{ original: '', thumbnail: '' }]);
+
+    useEffect(() => {
+        // galleryImages = [];
+        // images.forEach(img => {
+        //     galleryImages.push({ original: img.path, thumbnail: img.path })
+        // },[])
+
+        setImages(
+            images.map(img => ({
+                original: img.path,
+                thumbnail: img.path
+            }))
+        );
+
+        console.log("DEBUG: IMGS");
+        console.log(images);
+        console.log(imagesGallery);
+    }, []);
 
 
 
@@ -35,9 +51,11 @@ function CycleItem({ key, id, endDate, images, startDate, title }: CycleItemProp
                         return (<ImageItem key={image.id} path={image.path} id={image.id} ></ImageItem>)
                     })} */}
                     <ImageGallery
+                        key={id}
+
                         showPlayButton={false}
                         showBullets={false}
-                        items={galleryImages}
+                        items={imagesGallery}
                         thumbnailPosition={'left'}
                     />
                 </div>

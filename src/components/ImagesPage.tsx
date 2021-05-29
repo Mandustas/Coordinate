@@ -8,13 +8,10 @@ import { SidebarPages } from './OperationPageSidebar';
 function ImagesPage() {
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { cycles } = useTypedSelector(state => state.cycles)
-    const { fetchCycles } = useActions()
-
-    const { changePage } = useActions()
+    const { fetchCycles, changePage } = useActions()
 
     useEffect(() => {
         changePage(SidebarPages.Images)
-        
     }, [])
 
     useEffect(() => {
@@ -22,7 +19,6 @@ function ImagesPage() {
             fetchCycles(activeOperation.id)
         }
     }, [activeOperation]);
-
 
     return (
         <div className="row">
@@ -34,12 +30,9 @@ function ImagesPage() {
                             return (<CycleItem key={cycle.id} title={cycle.title} id={cycle.id} endDate={cycle.endDate} startDate={cycle.startDate} images={cycle.images}></CycleItem>)
                         })}
                     </div>
-
                 </div>
             </div>
         </div>
-
-
     )
 }
 

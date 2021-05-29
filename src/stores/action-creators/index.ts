@@ -6,6 +6,7 @@ import * as PagesActionCreators from './pages'
 import * as TargetUpdateActionCreators from './targetUpdate'
 import * as ObjectCreateActionCreators from './objectCreate'
 import * as ObjectUpdateActionCreators from './detectedObjectUpdate'
+import * as MapCenterActionCreators from './mapCenter'
 
 export default {
     ...OperationActionCreators,
@@ -16,4 +17,5 @@ export default {
     ...TargetUpdateActionCreators,
     ...ObjectCreateActionCreators,
     ...ObjectUpdateActionCreators,
+    ...MapCenterActionCreators,
 }

@@ -66,7 +66,8 @@ function ModalTargetAdd({ }: ModalTargetAddProps) {
                                 "Access-Control-Allow-Origin": "*",
                             }
                         };
-
+                        console.log(values);
+                        
                         try {
                             await axios.post(`https://localhost:44330/api/target`, values, axiosConfig)
                                 .then(res => console.log(res))
