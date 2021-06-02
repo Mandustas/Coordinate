@@ -26,8 +26,7 @@ function ObjectPopup({ id, name, description, img, x, y }: ObjectPopupProps) {
                     ?
                     <div onClick={() => handleClick}>
                         <span className="object-popup-text-bold">Изображение</span>:
-                        {/* <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}></img>
-                        <img style={{ width: "300px" }} src={img} alt="Изображение не найдено" onClick={() => handleClick()}></img> */}
+
                         <ImageGallery
                             showPlayButton={false}
                             showNav={false}

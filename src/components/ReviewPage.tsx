@@ -15,6 +15,7 @@ export enum CreateTypes {
     ModalMissionAdd = "modal-mission-add",
     PageOperationAdd = "page-operation-add",
     ModalOperationAdd = "modal-operation-add",
+    ModalSignIn = "modal-signin",
 
 }
 

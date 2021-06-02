@@ -90,6 +90,9 @@ function Map() {
         }
     }, [])
 
+    console.log(detectedObjects);
+    
+
     return (
         <>
             <MapContainer

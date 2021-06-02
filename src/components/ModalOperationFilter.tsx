@@ -8,7 +8,7 @@ function ModalOperationFilter() {
             <Modal modelType={FilterTypes.ModalOperationsHistoryFilter}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Фильтрация истории</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -23,7 +23,7 @@ function ModalOperationFilter() {
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                     <button type="button" className="btn btn-dark" data-dismiss="modal">Применить</button>
                 </div>
             </Modal>

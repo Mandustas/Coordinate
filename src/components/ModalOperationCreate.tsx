@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik'
 import * as yup from 'yup'
 import Modal from "./Modal"
 import { CreateTypes } from "./ReviewPage"
+import config from '../config/config.json'
 import axios from 'axios'
 
 function ModalOperationCreate() {
@@ -15,7 +16,7 @@ function ModalOperationCreate() {
             <Modal modelType={CreateTypes.ModalOperationAdd}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Создать операцию</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -31,10 +32,11 @@ function ModalOperationCreate() {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
                                 "Access-Control-Allow-Origin": "*",
+                                "Authorization": "Bearer " + localStorage.getItem("token")
                             }
                         };
                         try {
-                            axios.post(`https://localhost:44330/api/operation`, values, axiosConfig)
+                            axios.post(config.API_SERVER_URL + 'operation', values, axiosConfig)
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
                         } catch (error) {
@@ -67,7 +69,7 @@ function ModalOperationCreate() {
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button
                                         type={`submit`}
                                         className="btn btn-dark"

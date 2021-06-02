@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import config from '../config/config.json'
 import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 import { Field, Form, Formik } from 'formik'
@@ -27,7 +28,6 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
     let initialValuesCreate = {
         title: "",
         description: "",
-        operationId: 0,
         x: x.toString(),
         y: y.toString()
     }
@@ -42,7 +42,7 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
             <Modal modelType={CreateTypes.ModalObjectAdd}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Добавить объект на карту</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -55,20 +55,19 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
 
                     validateOnBlur
                     onSubmit={async (values, { resetForm }) => {
-                        if (activeOperation != null) {
-                            values.operationId = activeOperation.id
-                        }
+
                         let axiosConfig = {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
                                 "Access-Control-Allow-Origin": "*",
+                                "Authorization": "Bearer " + localStorage.getItem("token")
                             }
                         };
                         values.x = x.toString()
                         values.y = y.toString()
                         console.log(values)
                         try {
-                            await axios.post(`https://localhost:44330/api/DetectedObject`, values, axiosConfig)
+                            await axios.post(config.API_SERVER_URL + `DetectedObject`, values, axiosConfig)
 
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
@@ -158,7 +157,7 @@ function ModalObjectAdd({ }: ModalObjectAddState) {
 
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button
                                         type={`submit`}
                                         className="btn btn-dark"

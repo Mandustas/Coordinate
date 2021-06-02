@@ -17,13 +17,13 @@ function MissionsPage() {
 
     useEffect(() => {
         fetchOperations()
-        
+
     }, [])
     useEffect(() => {
         changePage(SidebarPages.Map)
-        
+
     }, [])
-    
+
     let missionsActive = new Array();
 
 
@@ -41,7 +41,6 @@ function MissionsPage() {
             {/* <TargetPanel></TargetPanel> */}
             <div className="col-md-4 col-12 missions-list">
                 <OperationPageHeader title="Миссии поиска" isBurger={true} modelType={CreateTypes.ModalMissionAdd}></OperationPageHeader>
-
                 {
                     activeOperation != null
                         ? missionsActive.map((mission: any) => {
@@ -54,7 +53,6 @@ function MissionsPage() {
                         })
                         : null
                 }
-
             </div>
             <div className="col-md-8 col-12" id="MapContainer" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>

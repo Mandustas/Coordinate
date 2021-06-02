@@ -3,8 +3,6 @@ import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
-import axios from 'axios'
-import { useTypedSelector } from '../hooks/useTypedSelector'
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
@@ -28,12 +26,7 @@ function ModalTargetAdd({ initialValues, children, title, onSubmit }: ModalTarge
         targetStatusId: yup.number().required("Выберите значение статуса"),
         lostTime: yup.date().required()
     })
-    const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchActiveOperations } = useActions()
-
-    let targetForChange: any;
-
-
 
     useEffect(() => {
         fetchActiveOperations()
@@ -49,7 +42,7 @@ function ModalTargetAdd({ initialValues, children, title, onSubmit }: ModalTarge
             <Modal modelType={CreateTypes.ModalTargetCreate}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">{title}</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -153,7 +146,7 @@ function ModalTargetAdd({ initialValues, children, title, onSubmit }: ModalTarge
 
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button
                                         type={`submit`}
                                         className="btn btn-dark"

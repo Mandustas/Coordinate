@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from '../config/config.json'
 import "../components/OperationCard.css"
 import { useActions } from "../hooks/useActions";
 
@@ -23,14 +24,15 @@ function OperationCard({ isActive, title, key, id, coordinator, members, targets
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 "Access-Control-Allow-Origin": "*",
+                "Authorization": "Bearer " + localStorage.getItem("token")
             }
         };
         const isConfirm = window.confirm("Подтвердите завершение операции")
         if (isConfirm) {
-            const res = await axios.put('https://localhost:44330/api/operation/' + id, { isSuccess: true }, axiosConfig);
+            const res = await axios.put(config.API_SERVER_URL + 'operation/' + id, { isSuccess: true }, axiosConfig);
         }
-        setTimeout(fetchOperations(), 100);
-        setTimeout(fetchActiveOperations(), 100);
+        fetchOperations()
+        fetchActiveOperations()
     }
     return (
         <div className={` ${isActive ? 'col-12' : 'col-md-12 col-xl-4 mb-4'} `} >
@@ -42,8 +44,8 @@ function OperationCard({ isActive, title, key, id, coordinator, members, targets
                         <div className="operation-card-header-title" >
                             {
                                 isActive
-                                    ? <h2 className="operation-card-title" onClick={handleClick}>{title}</h2>
-                                    : <h5 className="operation-card-title" onClick={handleClick}>{title}</h5>
+                                    ? <h2 className="operation-card-title operation-card-title-underline" onClick={handleClick}>{title}</h2>
+                                    : <h5 className="operation-card-title ">{title}</h5>
                             }
                             {isActive
                                 ? <i className="fa fa-check complete-operation-button" onClick={() => OperationCompleteHandler(id)}></i>

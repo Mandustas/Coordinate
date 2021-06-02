@@ -1,7 +1,7 @@
 import axios from "axios";
+import config from '../config/config.json'
 import "../components/TargetCard.css"
 import { useActions } from "../hooks/useActions";
-import { CreateTypes } from "./ReviewPage";
 import { TargetStatuses } from "./TargetPanel";
 
 
@@ -30,10 +30,16 @@ function TargetCard({ id, key, title, date, description, status, onClick }: Targ
     async function targetDeleteHandler(id: number, title: string) {
         const isDelete = window.confirm("Подтвердите удаление цели " + title)
         if (isDelete) {
-            const res = await axios.delete('https://localhost:44330/api/target/' + id);
+            let axiosConfig = {
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    "Access-Control-Allow-Origin": "*",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            };
+            const res = await axios.delete(config.API_SERVER_URL + 'target/' + id, axiosConfig);
         }
         setTimeout(fetchActiveOperations(), 100);
-
     }
 
 

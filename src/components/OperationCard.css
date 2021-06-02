@@ -1,5 +1,4 @@
 .operation-card {
-    cursor: pointer;
     /* -webkit-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
     -moz-box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34);
     box-shadow: 8px 11px 36px -14px rgba(34, 60, 80, 0.34); */
@@ -31,8 +30,10 @@
     /* border: solid 1px darkgrey;
     border-radius: 5px; */
 }
-.operation-card-title:hover{
+
+.operation-card-title-underline:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 .complete-operation-button:hover{
 

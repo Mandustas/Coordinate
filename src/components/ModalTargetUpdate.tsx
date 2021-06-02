@@ -3,6 +3,7 @@ import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
+import config from '../config/config.json'
 import axios from 'axios'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import {
@@ -19,7 +20,6 @@ export interface ModalTargetUpdateProps {
 
 function ModalTargetUpdate({ }: ModalTargetUpdateProps) {
     const { target } = useTypedSelector(state => state.targetUpdate)
-    const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchActiveOperations } = useActions()
 
     const validationSchema = yup.object().shape({
@@ -35,7 +35,6 @@ function ModalTargetUpdate({ }: ModalTargetUpdateProps) {
         description: target != null ? target.description : "",
         targetTypeId: target != null ? target.targetTypeId : 0,
         targetStatusId: target != null ? target.targetStatusId : 0,
-        operationId: target != null ? target.operationId : 0,
         lostTime: target != null ? target.lostTime : "",
     }
 
@@ -50,7 +49,7 @@ function ModalTargetUpdate({ }: ModalTargetUpdateProps) {
             <Modal modelType={CreateTypes.ModalTargetUpdate}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Обновить цель</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -62,30 +61,24 @@ function ModalTargetUpdate({ }: ModalTargetUpdateProps) {
                     }
                     validateOnBlur
                     onSubmit={async (values) => {
-                        if (activeOperation != null) {
-                            values.operationId = activeOperation.id
-                        }
-
                         let axiosConfig = {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
                                 "Access-Control-Allow-Origin": "*",
+                                "Authorization": "Bearer " + localStorage.getItem("token")
                             }
                         };
 
                         try {
-                            await axios.put(`https://localhost:44330/api/target/` + target.id, values, axiosConfig)
+                            await axios.put(config.API_SERVER_URL + `target/` + target.id, values, axiosConfig)
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
                         } catch (error) {
                             console.log(error);
                         }
 
-                        setTimeout(fetchActiveOperations(), 100);
-
+                        fetchActiveOperations()
                         $("#" + CreateTypes.ModalTargetUpdate).modal('hide')
-
-
                     }}
                     validationSchema={validationSchema}
                 >
@@ -190,7 +183,7 @@ function ModalTargetUpdate({ }: ModalTargetUpdateProps) {
 
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button
                                         type={`submit`}
                                         className="btn btn-dark"

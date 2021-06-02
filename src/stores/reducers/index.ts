@@ -4,6 +4,7 @@ import { operationReducer } from "./operationReducer";
 import { detectedObjectReducer } from "./detectedObjectReducer";
 import { cyclesReducer } from "./cyclesReducer";
 import { pagesReducer } from "./pagesReducer";
+import { authReducer } from "./authReducer";
 import { targetUpdateReducer } from "./targetUpdate";
 import { objectCreateReducer } from "./objectCreate";
 import { objectUpdateReducer } from "./detectedObjectUpdate";
@@ -16,6 +17,7 @@ export const rootReducer = combineReducers(
         detectedObjects: detectedObjectReducer,
         cycles: cyclesReducer,
         pages: pagesReducer,
+        auth: authReducer,
         targetUpdate: targetUpdateReducer,
         objectCreate: objectCreateReducer,
         objectUpdate: objectUpdateReducer,

@@ -3,6 +3,7 @@ import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
+import config from '../config/config.json'
 import axios from 'axios'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
@@ -52,7 +53,7 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
             <Modal modelType={CreateTypes.ModalObjectUpdate}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Редактировать объект</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -71,6 +72,7 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
                                 "Access-Control-Allow-Origin": "*",
+                                "Authorization": "Bearer " + localStorage.getItem("token")
                             }
                         };
 
@@ -82,7 +84,7 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
                             isDesired: values.isDesired
                         }
                         try {
-                            await axios.put(`https://localhost:44330/api/DetectedObject/` + detectedObject.id, valuesValid, axiosConfig)
+                            await axios.put(config.API_SERVER_URL + 'DetectedObject/' + detectedObject.id, valuesValid, axiosConfig)
 
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
@@ -167,7 +169,7 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
 
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button
                                         type={`submit`}
                                         className="btn btn-dark"

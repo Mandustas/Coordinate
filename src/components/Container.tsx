@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import "../components/Container.scss"
 import ModalObjectAdd from './ModalObjectAdd';
 import ModalObjectUpdate from './ModalObjectUpdate';
+import ModalSignIn from './ModalSignIn';
 import ModalTargetUpdate from './ModalTargetUpdate';
 
 export interface ContainerProps {
@@ -19,6 +20,7 @@ function Container({ children }: ContainerProps) {
     return (
         <div className="container-fluid bg-light" id="AppContainer" >
             {children}
+            <ModalSignIn />
             <ModalObjectAdd />
             <ModalObjectUpdate></ModalObjectUpdate>
             <ModalTargetUpdate></ModalTargetUpdate>

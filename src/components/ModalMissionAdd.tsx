@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import config from '../config/config.json'
 import Modal from './Modal'
 import { CreateTypes } from './ReviewPage'
 import { Field, Form, Formik } from 'formik'
@@ -37,7 +38,7 @@ function ModalMissionAdd() {
             {/* <Modal modelType={CreateTypes.ModalMissionAdd}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Создать миссию</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -51,15 +52,15 @@ function ModalMissionAdd() {
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
-                    <button type="button" className="btn btn-dark" data-dismiss="modal">Добавить</button>
+                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Добавить</button>
                 </div>
             </Modal> */}
 
             <Modal modelType={CreateTypes.ModalMissionAdd}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Создать миссию</h5>
-                    <button type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i className="fa fa-times"></i></span>
                     </button>
                 </div>
@@ -74,11 +75,12 @@ function ModalMissionAdd() {
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8',
                                 "Access-Control-Allow-Origin": "*",
+                                "Authorization": "Bearer " + localStorage.getItem("token")
                             }
                         };
 
                         try {
-                            await axios.post(`https://localhost:44330/api/Mission`, {userId: values.user.value}, axiosConfig)
+                            await axios.post(config.API_SERVER_URL + `Mission`, { userId: values.user.value }, axiosConfig)
                                 .then(res => console.log(res))
                                 .catch(err => console.log('Login: ', err));
                             resetForm({})
@@ -116,7 +118,7 @@ function ModalMissionAdd() {
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button
                                         type={`submit`}
                                         className="btn btn-dark"
