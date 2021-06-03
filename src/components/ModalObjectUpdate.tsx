@@ -83,6 +83,7 @@ function ModalObjectUpdate({ }: ModalObjectAddUpdate) {
                             missionId: values.mission.value == 9999999999 ? null : values.mission.value,
                             isDesired: values.isDesired
                         }
+                        
                         try {
                             await axios.put(config.API_SERVER_URL + 'DetectedObject/' + detectedObject.id, valuesValid, axiosConfig)
 

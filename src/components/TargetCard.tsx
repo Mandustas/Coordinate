@@ -60,9 +60,7 @@ function TargetCard({ id, key, title, date, description, status, onClick }: Targ
                     </div>
                     <p className="card-text">{description}</p>
                 </div>
-
             </div>
-
         </div>
     )
 }

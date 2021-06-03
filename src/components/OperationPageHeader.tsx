@@ -11,9 +11,10 @@ export interface OperationPageHeaderProps {
     filter?: boolean
     filterType?: string
     disabled?: boolean
+    clustering?: boolean
 }
 
-function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter, filterType, disabled: idDisabled }: OperationPageHeaderProps) {
+function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter, filterType, disabled: idDisabled, clustering }: OperationPageHeaderProps) {
 
     function handleClick() {
         if (href !== undefined && href != null && href !== "") {
@@ -31,7 +32,6 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
     return (
 
         <nav className="navbar justify-content-between ">
-
             <div className="d-flex">
                 {isBurger
                     ? <button type="button" id="sidebarCollapse" className="btn ">
@@ -47,18 +47,24 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
                     } {title}
                 </a>
             </div>
-            {filter === true
-                ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${filterType}`} >
-                    <i className="fa fa-filter"></i>
-                </div>
-                : null
-            }
-            {(modelType !== undefined && modelType != null && modelType !== "") || (pageAddHref !== undefined && pageAddHref != null && pageAddHref !== "")
-                ? <div className={`btn header-add-button ${idDisabled ? "disabled" : null}`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
-                    <i className={`fa  ${call === true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
-                </div>
-                : null
-            }
+            <div className="d-flex">
+                {filter === true
+                    ? <div className={`btn header-add-button`} data-bs-toggle="modal" data-bs-target={`.${filterType}`} >
+                        <i className="fa fa-filter"></i>
+                    </div>
+                    : null
+                }
+
+                {(modelType !== undefined && modelType != null && modelType !== "") || (pageAddHref !== undefined && pageAddHref != null && pageAddHref !== "")
+                    ? <div className={`btn header-add-button ${idDisabled ? "disabled" : null}`} data-bs-toggle="modal" data-bs-target={`.${modelType}`} onClick={handleCreateClick}>
+                        <i className={`fa  ${call === true ? 'fa-bullhorn' : 'fa-plus'}`} aria-hidden="true"></i>
+                    </div>
+                    : null
+                }
+            </div>
+
+
+
 
         </nav>
     )

@@ -8,6 +8,7 @@ import * as TargetUpdateActionCreators from './targetUpdate'
 import * as ObjectCreateActionCreators from './objectCreate'
 import * as ObjectUpdateActionCreators from './detectedObjectUpdate'
 import * as MapCenterActionCreators from './mapCenter'
+import * as ClusteringUsersActionCreators from './clusteringUsers'
 
 export default {
     ...OperationActionCreators,
@@ -20,4 +21,5 @@ export default {
     ...ObjectCreateActionCreators,
     ...ObjectUpdateActionCreators,
     ...MapCenterActionCreators,
+    ...ClusteringUsersActionCreators,
 }

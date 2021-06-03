@@ -9,6 +9,7 @@ import { targetUpdateReducer } from "./targetUpdate";
 import { objectCreateReducer } from "./objectCreate";
 import { objectUpdateReducer } from "./detectedObjectUpdate";
 import { mapCenterReducer } from "./mapCenterReducer";
+import { clusteringUsersReducer } from "./clusteringUsersReducer";
 
 export const rootReducer = combineReducers(
     {
@@ -22,6 +23,7 @@ export const rootReducer = combineReducers(
         objectCreate: objectCreateReducer,
         objectUpdate: objectUpdateReducer,
         mapCenter: mapCenterReducer,
+        clusteringUsers: clusteringUsersReducer,
     }
 )
 

@@ -40,7 +40,12 @@ function MissionsPage() {
         <div className="row mission-page-container" id="MissionPage">
             {/* <TargetPanel></TargetPanel> */}
             <div className="col-md-4 col-12 missions-list">
-                <OperationPageHeader title="Миссии поиска" isBurger={true} modelType={CreateTypes.ModalMissionAdd}></OperationPageHeader>
+                <OperationPageHeader
+                    title="Миссии поиска"
+                    isBurger={true}
+                    modelType={CreateTypes.ModalMissionAdd}
+                    clustering={true}
+                ></OperationPageHeader>
                 {
                     activeOperation != null
                         ? missionsActive.map((mission: any) => {
