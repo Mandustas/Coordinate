@@ -8,12 +8,12 @@ import OperationPageHeader from './OperationPageHeader';
 import { CreateTypes, FilterTypes } from './ReviewPage';
 
 function Operations() {
-    const {  operations } = useTypedSelector(state => state.operation)
+    const { operations } = useTypedSelector(state => state.operation)
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchOperations } = useActions()
     useEffect(() => {
         fetchOperations()
-    }, [])
+    }, [activeOperation])
 
 
     return (
@@ -34,6 +34,14 @@ function Operations() {
 
                         })
                     }
+                    {
+                        activeOperation == null
+                            ?
+                            <div className="list-empty">
+                                Активных операций нет
+                            </div>
+                            : null
+                    }
                 </div>
             </div>
             <div className="col-md-8 col-12">
@@ -50,6 +58,14 @@ function Operations() {
                                 return null;
                             }
                         })
+                    }
+                    {
+                        operations == null
+                            ?
+                            <div className="list-empty">
+                                Активных операций нет
+                            </div>
+                            : null
                     }
                 </div>
             </div>

@@ -1,4 +1,6 @@
+import { useEffect } from "react"
 import "../components/OperationPageHeader.css"
+import { useTypedSelector } from "../hooks/useTypedSelector"
 
 export interface OperationPageHeaderProps {
     title?: string
@@ -15,6 +17,7 @@ export interface OperationPageHeaderProps {
 }
 
 function OperationPageHeader({ title, isBurger, operationName, href, modelType, pageAddHref, call, filter, filterType, disabled: idDisabled, clustering }: OperationPageHeaderProps) {
+    const { activeOperation } = useTypedSelector(state => state.activeOperation)
 
     function handleClick() {
         if (href !== undefined && href != null && href !== "") {
@@ -29,6 +32,11 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
             return
         }
     }
+
+    useEffect(() => {
+
+    }, [idDisabled])
+
     return (
 
         <nav className="navbar justify-content-between ">
@@ -62,10 +70,6 @@ function OperationPageHeader({ title, isBurger, operationName, href, modelType, 
                     : null
                 }
             </div>
-
-
-
-
         </nav>
     )
 }

@@ -58,6 +58,14 @@ function MissionsPage() {
                         })
                         : null
                 }
+                {
+                    missionsActive.length == 0
+                    ?
+                    <div className="list-empty">
+                        Активных миссий нет
+                    </div>
+                    : null
+                }
             </div>
             <div className="col-md-8 col-12" id="MapContainer" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
                 <Map></Map>

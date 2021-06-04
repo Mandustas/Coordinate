@@ -29,6 +29,14 @@ function ImagesPage() {
                         {cycles.map(cycle => {
                             return (<CycleItem key={cycle.id} title={cycle.title} id={cycle.id} endDate={cycle.endDate} startDate={cycle.startDate} images={cycle.images}></CycleItem>)
                         })}
+                        {
+                            cycles.length == 0
+                                ?
+                                <div className="list-empty">
+                                    Изображений нет
+                            </div>
+                                : null
+                        }
                     </div>
                 </div>
             </div>

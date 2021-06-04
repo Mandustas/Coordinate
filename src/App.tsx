@@ -13,21 +13,49 @@ import TargetPanel from './components/TargetPanel';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import Home from './components/Home';
 import { useActions } from './hooks/useActions';
+import * as signalR from "@microsoft/signalr";
+import config from "../src/config/config.json"
+
 
 function App() {
   const { isAuth } = useTypedSelector(state => state.auth)
-  const { activeOperation } = useTypedSelector(state => state.activeOperation)
-  const { authChange } = useActions()
+  const { activeOperation, loading } = useTypedSelector(state => state.activeOperation)
+  const { authChange, fetchActiveOperations } = useActions()
   const auth = localStorage.getItem("token") != null ? true : false
+
+  const hubConnection = new signalR.HubConnectionBuilder()
+    .withUrl(config.API_SERVER_URL + "notification")
+    .build();
+  // hubConnection.on("Send", data => {
+  //   console.log(data);
+  // });
+
+  hubConnection.start().then(() => console.log("Connection created!")).catch(() => console.log("Connection bad"));
+
   useEffect(() => {
     authChange(localStorage.getItem("token") != null ? true : false)
-    console.log(isAuth);
   }, [])
+
+  useEffect(() => {
+    hubConnection.on("SendMessage", message => {
+      fetchActiveOperations()
+    }); 
+  })
 
   return (
     <div className="App">
       <Header></Header>
-      <div className="overlay"></div>
+      <div className={`overlay ${loading ? "active" : null}`} ></div>
+      {
+        loading
+          ?
+          <div className="spinner-wrapper">
+            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+          </div>
+          :
+          null
+      }
+
       <OperationPageSidebar></OperationPageSidebar>
       {
         activeOperation != null && activeOperation.targets.length > 0

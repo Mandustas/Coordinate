@@ -11,7 +11,7 @@ function ReviewPageTargerArea() {
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
     const { fetchOperations } = useActions()
     const { fetchTargetUpdate } = useActions()
-    
+
     useEffect(() => {
         fetchOperations()
     }, [])
@@ -33,8 +33,16 @@ function ReviewPageTargerArea() {
                         return (<TargetCard key={target.id} id={target.id} date={lostDate} title={target.title} description={target.description} status={target.targetStatusId} onClick={() => UpdateTargetHandler(target.id)}></TargetCard>)
                     })
                     : null
-            }
 
+            }
+            {
+                activeOperation != null && activeOperation.targets.length == 0
+                    ?
+                    <div className="list-empty">
+                        Целей поиска нет
+                    </div>
+                    : null
+            }
             <ModalTargetAdd></ModalTargetAdd>
         </>
     )

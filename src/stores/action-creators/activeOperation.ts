@@ -15,7 +15,10 @@ export const fetchActiveOperations = () => {
                 }
             };
             const responseOperations = await axios.get(config.API_SERVER_URL + "operation/active", axiosConfig)
-            dispatch({ type: ActiveOperationActionTypes.FETCH_ACTIVEOPERATION_SUCCESS, payloadOperation: responseOperations.data })
+            setTimeout(() => {
+                dispatch({ type: ActiveOperationActionTypes.FETCH_ACTIVEOPERATION_SUCCESS, payloadOperation: responseOperations.data })
+            }, 500);
+            
         } catch (error) {
             dispatch({
                 type: ActiveOperationActionTypes.FETCH_ACTIVEOPERATION_ERROR,

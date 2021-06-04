@@ -34,8 +34,8 @@ function MissionCard({ key, id, detectedObjects, memberName }: MissionCardProps)
             <div className="card mission-card mb-2">
                 <div className="card-body text-dark">
                     <div className="d-flex w-100 justify-content-between">
-                        <div className="d-flex align-items-center">
-                            <h5 className="mb-3" style={{ paddingRight: "10px" }}>Миссия #{id}</h5>
+                        <div className="mb-3 d-flex align-items-center">
+                            <h5 className="" style={{ paddingRight: "10px", margin: "0px" }}>Миссия #{id}</h5>
                             {
                                 detectedObjects.length == 0
                                     ? <i className="fa fa-trash-o mission-delete-button" style={{ fontSize: "16px" }} onClick={() => missionDeleteHandler(id)}></i>
@@ -58,6 +58,14 @@ function MissionCard({ key, id, detectedObjects, memberName }: MissionCardProps)
                                         isDesired={detectedObject.isDesired}
                                     ></MissionObjectItem>)
                                 })
+                                : null
+                        }
+                        {
+                            detectedObjects.length == 0
+                                ?
+                                <div className="list-empty" style={{margin:0}}>
+                                    Объекты не назначены
+                                </div>
                                 : null
                         }
                     </div>
