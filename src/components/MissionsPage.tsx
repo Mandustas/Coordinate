@@ -12,20 +12,17 @@ import { SidebarPages } from './OperationPageSidebar'
 
 function MissionsPage() {
     const { activeOperation } = useTypedSelector(state => state.activeOperation)
-    const { fetchOperations } = useActions()
     const { changePage } = useActions()
 
-    useEffect(() => {
-        fetchOperations()
+    // useEffect(() => {
+    //     fetchOperations()
 
-    }, [])
+    // }, [])
     useEffect(() => {
         changePage(SidebarPages.Map)
-
     }, [])
 
     let missionsActive = new Array();
-
 
     if (activeOperation != null) {
         activeOperation.users.forEach((user: any) => {

@@ -1,4 +1,4 @@
 {
-    "AUTH_SERVER_URL": "http://localhost:2418/api/",
-    "API_SERVER_URL": "https://localhost:44330/api/"
+    "AUTH_SERVER_URL": "http://auth.poisk-bpla.ru/api/",
+    "API_SERVER_URL": "http://poisk-bpla.ru/api/"
 }
